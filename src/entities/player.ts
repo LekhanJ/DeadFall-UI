@@ -1,4 +1,4 @@
-import { Container, type Sprite } from "pixi.js";
+import { Container } from "pixi.js";
 
 export class Player extends Container {
     name: string;

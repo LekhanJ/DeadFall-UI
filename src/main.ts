@@ -1,65 +1,84 @@
-import { Application, Assets, Container, Sprite, Ticker } from "pixi.js";
+import { Application, Assets, Container, Rectangle, Sprite, Texture, Ticker } from "pixi.js";
 import { Player } from "./entities/player";
+import { loadMap } from "./helper/map_loader";
+import type { Input, PlayerMovement } from "./types/types";
+import { Communicator } from "./helper/communicator";
+import { Controls } from "./helper/controls";
 
-const websocket = new WebSocket("ws://localhost:3000");
-
-websocket.onopen = () => {
-  console.log("WebSocket connection established");
-};
+let SCREEN_WIDTH: number = 800;
+let SCREEN_HEIGHT: number = 600;
 
 (async () => {
+  const app = await createApplication();
+  SCREEN_HEIGHT = app.screen.height;
+  SCREEN_WIDTH = app.screen.width;
+  await loadMap(app);
+  
+  const communicator = new Communicator("ws://localhost:3000");
+  const controller = new Controls();
+  
+  const players = new Map<string, Player>();
+  let mySessionId: string | null = null;
+
+  communicator.on("connected", (data) => {
+    mySessionId = data.sessionId;
+    console.log("My session ID:", mySessionId);
+  });
+
+  communicator.on("playerMove", (data) => {
+    if (!data.players) return;
+
+    for (const [sessionId, playerData] of Object.entries(data.players)) {
+      const pos = playerData as { x: number; y: number };
+      
+      if (!players.has(sessionId)) {
+        createPlayer(sessionId).then(player => {
+          players.set(sessionId, player);
+          app.stage.addChild(player);
+          player.setPosition(pos.x, pos.y);
+        });
+      } else {
+        const player = players.get(sessionId);
+        if (player) {
+          player.setPosition(pos.x, pos.y);
+        }
+      }
+    }
+
+    const serverPlayerIds = new Set(Object.keys(data.players));
+    for (const [sessionId, player] of players.entries()) {
+      if (!serverPlayerIds.has(sessionId)) {
+        app.stage.removeChild(player);
+        players.delete(sessionId);
+        console.log("Player left:", sessionId);
+      }
+    }
+  });
+
+  app.ticker.add(() => {
+    const playerMovement: PlayerMovement = {
+      x: 0,
+      y: 0,
+      inputs: controller.inputs,
+    };
+    communicator.send("playerMove", playerMovement);
+  });
+})();
+
+async function createApplication(): Promise<Application> {
   const app = new Application();
   await app.init({ resizeTo: window });
   document.body.appendChild(app.canvas);
+  return app;
+}
 
-  const keys: Record<string, boolean> = {};
-  window.addEventListener("keydown", (e) => {
-    keys[e.key] = true;
-  });
-  window.addEventListener("keyup", (e) => {
-    keys[e.key] = false;
-  });
-
-  const tex = await Assets.load("public/vite.svg");
-  const player = new Player("Player");
+async function createPlayer(sessionId: string): Promise<Player> {
+  const tex = await Assets.load("public/player.png");
+  const player = new Player(sessionId);
   const sprite = Sprite.from(tex);
   sprite.anchor.set(0.5);
   player.addChild(sprite);
-  player.setPosition(app.screen.width / 2, app.screen.height / 2);
-
-  app.stage.addChild(player);
-
-  let position = {
-    x: player.x,
-    y: player.y,
-  };
-
-  websocket.onmessage = (event) => {
-    const newPosition = JSON.parse(event.data);
-    console.log(newPosition);
-
-    player.x = newPosition.x;
-    player.y = newPosition.y;
-
-    position.x = player.x;
-    position.y = player.y;
-  };
-
-  app.ticker.add(() => {
-    if (websocket.readyState === WebSocket.OPEN) {
-      const inputs = [];
-
-      if (keys["w"]) inputs.push("up");
-      if (keys["s"]) inputs.push("down");
-      if (keys["a"]) inputs.push("left");
-      if (keys["d"]) inputs.push("right");
-
-      websocket.send(
-        JSON.stringify({
-          ...position,
-          inputs,
-        })
-      );
-    }
-  });
-})();
+  player.setPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+  player.scale.set(0.25);
+  return player;
+}
