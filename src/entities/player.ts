@@ -2,7 +2,7 @@ import { Container } from "pixi.js";
 
 export class Player extends Container {
     name: string;
-
+    
     constructor(name: string) {
         super();
         this.name = name;

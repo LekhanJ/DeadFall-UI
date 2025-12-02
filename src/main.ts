@@ -1,7 +1,7 @@
-import { Application, Assets, Container, Rectangle, Sprite, Texture, Ticker } from "pixi.js";
+import { Application, Assets, Sprite } from "pixi.js";
 import { Player } from "./entities/player";
 import { loadMap } from "./helper/map_loader";
-import type { Input, PlayerMovement } from "./types/types";
+import type { PlayerInput } from "./types/types";
 import { Communicator } from "./helper/communicator";
 import { Controls } from "./helper/controls";
 
@@ -13,10 +13,10 @@ let SCREEN_HEIGHT: number = 600;
   SCREEN_HEIGHT = app.screen.height;
   SCREEN_WIDTH = app.screen.width;
   await loadMap(app);
-  
+
   const communicator = new Communicator("ws://localhost:3000");
   const controller = new Controls();
-  
+
   const players = new Map<string, Player>();
   let mySessionId: string | null = null;
 
@@ -25,23 +25,35 @@ let SCREEN_HEIGHT: number = 600;
     console.log("My session ID:", mySessionId);
   });
 
-  communicator.on("playerMove", (data) => {
-    if (!data.players) return;
+  communicator.on("startGame", (data) => {
+    console.log("Game started");
 
+    if (!data.players) return;
     for (const [sessionId, playerData] of Object.entries(data.players)) {
       const pos = playerData as { x: number; y: number };
-      
-      if (!players.has(sessionId)) {
-        createPlayer(sessionId).then(player => {
+      if (players.has(sessionId)) {
+        const existingPlayer = players.get(sessionId);
+        existingPlayer?.setPosition(pos.x, pos.y);
+      } else {
+        createPlayer(sessionId).then((player) => {
           players.set(sessionId, player);
           app.stage.addChild(player);
           player.setPosition(pos.x, pos.y);
         });
-      } else {
-        const player = players.get(sessionId);
-        if (player) {
-          player.setPosition(pos.x, pos.y);
-        }
+      }
+    }
+  });
+
+  communicator.on("playerMove", (data) => {
+    if (!data.players) return;
+    console.log(data.players);
+
+    for (const [sessionId, playerData] of Object.entries(data.players)) {
+      const pos = playerData as { x: number; y: number };
+      const player = players.get(sessionId);
+
+      if (player) {
+        player.setPosition(pos.x, pos.y);
       }
     }
 
@@ -56,9 +68,7 @@ let SCREEN_HEIGHT: number = 600;
   });
 
   app.ticker.add(() => {
-    const playerMovement: PlayerMovement = {
-      x: 0,
-      y: 0,
+    const playerMovement: PlayerInput = {
       inputs: controller.inputs,
     };
     communicator.send("playerMove", playerMovement);
@@ -78,7 +88,6 @@ async function createPlayer(sessionId: string): Promise<Player> {
   const sprite = Sprite.from(tex);
   sprite.anchor.set(0.5);
   player.addChild(sprite);
-  player.setPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
   player.scale.set(0.25);
   return player;
 }

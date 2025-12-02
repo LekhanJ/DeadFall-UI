@@ -1,5 +1,3 @@
-import type { PlayerMovement } from "../types/types";
-
 export class Communicator {
   websocket: WebSocket;
   private listeners: Record<string, ((data: any) => void)[]> = {};

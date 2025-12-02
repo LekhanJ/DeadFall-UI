@@ -1,6 +1,4 @@
 export type Input = [boolean, boolean, boolean, boolean];
-export type PlayerMovement = {
-    x: number;
-    y: number;
+export type PlayerInput = {
     inputs: Input;
 }
