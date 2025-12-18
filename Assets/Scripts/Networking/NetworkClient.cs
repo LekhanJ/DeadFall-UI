@@ -18,13 +18,9 @@ public class NetworkClient : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private ServerObjects serverSpawnables;
 
-    // all players in the game (including me)
     private Dictionary<string, GameObject> serverObjects = new();
-
-    // reference to MY player object
     private GameObject localPlayer;
 
-    // simple send throttle
     private Vector3 lastSentPosition;
     private float stillTimer;
 
@@ -39,7 +35,6 @@ public class NetworkClient : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject); 
     }
-
 
     async void Start()
     {
@@ -62,44 +57,41 @@ public class NetworkClient : MonoBehaviour
                 case "initialState":
                     HandleInitialState(data);
                     break;
-
                 case "spawn":
                     HandleSpawn(data);
                     break;
-
                 case "updatePosition":
                     HandlePositionUpdate(data);
                     break;
-
                 case "player_left":
                     HandlePlayerLeft(data);
                     break;
-
                 case "aim":
                     HandleAimUpdate(data);
                     break;
-
                 case "shoot":
                     HandleShoot(data);
                     break;
-
                 case "healthUpdate":
                     HandleHealthUpdate(data);
                     break;
-
                 case "playerKilled":
                     HandlePlayerKilled(data);
                     break;
-
                 case "serverSpawn":
                     HandleServerSpawn(data);
                     break;
-                
                 case "serverUnspawn":
                     HandleServerUnspawn(data);
                     break;
                 case "bulletMove":
                     HandleBulletMove(data);
+                    break;
+                case "inventorySwitch":
+                    HandleInventorySwitch(data);
+                    break;
+                case "meleeAttack":
+                    HandleMeleeAttack(data);
                     break;
             }
         };
@@ -129,57 +121,37 @@ public class NetworkClient : MonoBehaviour
     void HandleInitialState(JObject data)
     {
         ClientID = data["sessionId"]!.ToString();
-
-        // 1. Spawn local player
         SpawnPlayer(ClientID, true);
 
-        // 2. Spawn all other connected players
         foreach (var other in data["others"]!)
         {
             Player p = other.ToObject<Player>();
-            SpawnPlayer(p.id, false);
+            SpawnPlayer(p.sessionId, false);
 
-            serverObjects[p.id].transform.position = new Vector3(
-                p.position.x,
-                p.position.y,
-                0f
-            );
+            serverObjects[p.sessionId].transform.position = new Vector3(p.position.x, p.position.y, 0f);
         }
     }
-
 
     void HandleSpawn(JObject data)
     {
         Player p = data["player"].ToObject<Player>();
-
-        SpawnPlayer(p.id, false);
-
-        serverObjects[p.id].transform.position = new Vector3(
-            p.position.x,
-            p.position.y,
-            0f
-        );
+        SpawnPlayer(p.sessionId, false);
+        serverObjects[p.sessionId].transform.position = new Vector3(p.position.x, p.position.y, 0f);
     }
-
 
     void HandlePositionUpdate(JObject data)
     {
         string id = data["sessionId"]!.ToString();
-
         if (id == ClientID) return;
         if (!serverObjects.TryGetValue(id, out GameObject obj)) return;
 
         Position pos = data["position"].ToObject<Position>();
-
         obj.transform.position = new Vector3(pos.x, pos.y, obj.transform.position.z);
     }
-
-
 
     void HandlePlayerLeft(JObject data)
     {
         string id = data["sessionId"]!.ToString();
-
         if (serverObjects.TryGetValue(id, out GameObject obj))
         {
             Destroy(obj);
@@ -193,25 +165,24 @@ public class NetworkClient : MonoBehaviour
         if (!serverObjects.TryGetValue(id, out GameObject player)) return;
 
         Position dir = data["direction"].ToObject<Position>();
-
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
 
         player.transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
-
     void HandleShoot(JObject data)
     {
         Position pos  = data["position"].ToObject<Position>();
         Position dir  = data["direction"].ToObject<Position>();
+        string weaponName = data["weaponName"]?.ToString() ?? "Pistol";
 
         Vector2 p = new Vector2(pos.x, pos.y);
         Vector2 d = new Vector2(dir.x, dir.y);
 
+        // Load weapon-specific bullet if needed
         GameObject bullet = Instantiate(bulletPrefab, p, Quaternion.identity, networkContainer);
         bullet.GetComponent<Bullet>().Init(d);
     }
-
 
     void HandleHealthUpdate(JObject data)
     {
@@ -239,28 +210,28 @@ public class NetworkClient : MonoBehaviour
             hp.Die();
         }
 
-        // If this is local, you might also:
         if (id == ClientID)
         {
             Debug.Log("You died!");
-            // disable input, show game over, etc.
         }
     }
 
-    void HandleServerSpawn(JObject data) {
+    void HandleServerSpawn(JObject data) 
+    {
         string name = data["name"]!.ToString();
         string id = data["id"]!.ToString();
-
         Position pos  = data["position"].ToObject<Position>();
         
         GameObject spawnedObject;
 
-        if (!serverObjects.ContainsKey(id)) {
+        if (!serverObjects.ContainsKey(id)) 
+        {
             ServerObjectData sod = serverSpawnables.GetObjectByName(name);
             spawnedObject = Instantiate(sod.Prefab, networkContainer);
             spawnedObject.transform.position = new Vector3(pos.x, pos.y, 0);
 
-            if (name == "Bullet") {
+            if (name == "Bullet") 
+            {
                 Position direction = data["direction"].ToObject<Position>();
                 float rot = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 Vector3 currentRotation = new Vector3(0, 0, rot - 90);
@@ -271,23 +242,56 @@ public class NetworkClient : MonoBehaviour
         }
     }
 
-    void HandleServerUnspawn(JObject data) {
+    void HandleServerUnspawn(JObject data) 
+    {
         string id = data["id"]!.ToString();
-        DestroyImmediate(serverObjects[id]);
-        serverObjects.Remove(id);
+        if (serverObjects.ContainsKey(id))
+        {
+            DestroyImmediate(serverObjects[id]);
+            serverObjects.Remove(id);
+        }
     }
 
-    void HandleBulletMove(JObject data) {
+    void HandleBulletMove(JObject data) 
+    {
         string id = data["id"]!.ToString();
-
-        if (!serverObjects.TryGetValue(id, out GameObject bullet))
-            return;
+        if (!serverObjects.TryGetValue(id, out GameObject bullet)) return;
 
         Position pos = data["position"].ToObject<Position>();
-
         bullet.transform.position = new Vector3(pos.x, pos.y, 0);
     }
 
+    void HandleInventorySwitch(JObject data)
+    {
+        string id = data["sessionId"]!.ToString();
+        if (id == ClientID) return; // Don't handle our own
+        if (!serverObjects.TryGetValue(id, out GameObject player)) return;
+
+        int slotIndex = data["slotIndex"]!.Value<int>();
+        string weaponName = data["weaponName"]?.ToString();
+
+        var inventory = player.GetComponent<InventorySystem>();
+        if (inventory != null)
+        {
+            inventory.EquipSlotForRemotePlayer(slotIndex, weaponName);
+        }
+    }
+
+    void HandleMeleeAttack(JObject data)
+    {
+        string attackerId = data["attackerId"]!.ToString();
+        string targetId = data["targetId"]!.ToString();
+        float damage = data["damage"]!.Value<float>();
+
+        Debug.Log($"Player {attackerId} punched {targetId} for {damage} damage");
+
+        // Apply damage locally if needed
+        if (targetId == ClientID)
+        {
+            // Take damage
+            Debug.Log("You got punched!");
+        }
+    }
 
     // -------------------- sending --------------------
 
@@ -295,7 +299,6 @@ public class NetworkClient : MonoBehaviour
     {
         Vector3 pos = localPlayer.transform.position;
 
-        // movement detection
         if (Vector3.Distance(pos, lastSentPosition) > 0.001f)
         {
             stillTimer = 0f;
@@ -328,7 +331,6 @@ public class NetworkClient : MonoBehaviour
         websocket.SendText(msg.ToString());
     }
 
-
     public async void SendAim(Vector2 dir)
     {
         if (websocket.State != WebSocketState.Open) return;
@@ -343,8 +345,7 @@ public class NetworkClient : MonoBehaviour
         await websocket.SendText(msg.ToString());
     }
 
-
-    public async void SendShoot(BulletData bulletData)
+    public async void SendShoot(BulletData bulletData, string weaponName)
     {
         if (websocket.State != WebSocketState.Open) return;
 
@@ -358,12 +359,57 @@ public class NetworkClient : MonoBehaviour
                 x = bulletData.direction.x,
                 y = bulletData.direction.y
             },
-            bulletId = bulletData.id
+            bulletId = bulletData.id,
+            weaponName = weaponName
         });
 
         await websocket.SendText(msg.ToString());
     }
 
+    public async void SendInventorySwitch(int slotIndex)
+    {
+        if (websocket.State != WebSocketState.Open) return;
+
+        var inventory = localPlayer.GetComponent<InventorySystem>();
+        var currentItem = inventory.GetCurrentItem();
+        
+        string weaponName = currentItem?.weaponData?.weaponName ?? "";
+
+        JObject msg = JObject.FromObject(new {
+            type = "inventorySwitch",
+            slotIndex = slotIndex,
+            weaponName = weaponName
+        });
+
+        await websocket.SendText(msg.ToString());
+    }
+
+    public async void SendMeleeAttack(string targetName, float damage)
+    {
+        if (websocket.State != WebSocketState.Open) return;
+
+        // Extract target ID from name
+        string targetId = ExtractIdFromPlayerName(targetName);
+
+        JObject msg = JObject.FromObject(new {
+            type = "meleeAttack",
+            targetId = targetId,
+            damage = damage
+        });
+
+        await websocket.SendText(msg.ToString());
+    }
+
+    string ExtractIdFromPlayerName(string playerName)
+    {
+        // Player names are like "Player_<id>" or "Player_<id>_LOCAL"
+        string[] parts = playerName.Split('_');
+        if (parts.Length >= 2)
+        {
+            return parts[1];
+        }
+        return "";
+    }
 
     // -------------------- utils --------------------
 
@@ -380,11 +426,9 @@ public class NetworkClient : MonoBehaviour
         {
             localPlayer = obj;
             lastSentPosition = obj.transform.position;
-
             Camera.main.GetComponent<CameraController>().SetTarget(localPlayer.transform);
         }
     }
-
 
     private async void OnApplicationQuit()
     {
@@ -397,7 +441,7 @@ public class NetworkClient : MonoBehaviour
 
 [System.Serializable]
 public class Player {
-    public string id;
+    public string sessionId;
     public Position position;
 }
 

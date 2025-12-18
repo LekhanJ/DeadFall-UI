@@ -1,0 +1,1196 @@
+fileFormatVersion: 2
+guid: 9dba246260dfb7f56ac9e5ab42495a38
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4128550690663097066
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_0
+  - first:
+      213: -1598931958032458719
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_1
+  - first:
+      213: 5292788975627981475
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_2
+  - first:
+      213: 6867752583203270401
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_3
+  - first:
+      213: 1773588865652130326
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_4
+  - first:
+      213: -8538509539364479768
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_5
+  - first:
+      213: 997582116600649415
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_6
+  - first:
+      213: -358809494441717650
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_7
+  - first:
+      213: -6504402812241197678
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_8
+  - first:
+      213: -5465593158923259729
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_9
+  - first:
+      213: 5482407777300279434
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_10
+  - first:
+      213: -2057241977908216109
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_11
+  - first:
+      213: 8786747001591737299
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_12
+  - first:
+      213: 3712882963026650569
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_13
+  - first:
+      213: 1583278918955300488
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_14
+  - first:
+      213: 8656021114398445918
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_15
+  - first:
+      213: -4808266183944212137
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_16
+  - first:
+      213: -3946482980609458247
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_17
+  - first:
+      213: -4957082079802035559
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_18
+  - first:
+      213: 7758835876658460868
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_19
+  - first:
+      213: -7581297397412930990
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_20
+  - first:
+      213: 7925309897797812914
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_21
+  - first:
+      213: 7553342535314373765
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_22
+  - first:
+      213: -5446979867997880405
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_23
+  - first:
+      213: -4326760664860101044
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_24
+  - first:
+      213: -992602164867755805
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_25
+  - first:
+      213: 6969556700746722307
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_26
+  - first:
+      213: -6102947825205346445
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_27
+  - first:
+      213: 3424208717653572835
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_28
+  - first:
+      213: -8875275602696903340
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_29
+  - first:
+      213: 4211122149700132871
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_30
+  - first:
+      213: -8011420053995107213
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_31
+  - first:
+      213: 8666559434472511544
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_32
+  - first:
+      213: -1610307540445047113
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_33
+  - first:
+      213: 9164666487519379277
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_34
+  - first:
+      213: 2231192711709688938
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_35
+  - first:
+      213: 4990920203135521422
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_36
+  - first:
+      213: 5419566900243101847
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_37
+  - first:
+      213: 3131095123818484620
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_38
+  - first:
+      213: -3732752685064790723
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_39
+  - first:
+      213: -907380609502606474
+    second: sactx-2048x2048-Crunch-IconsGame-33508fcb_40
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1623
+        width: 273
+        height: 314
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae2ea2aaafe8b4930800000000000000
+      internalID: 4128550690663097066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_1
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 1623
+        width: 278
+        height: 317
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12c947d0bd37fc9e0800000000000000
+      internalID: -1598931958032458719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_2
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 1612
+        width: 293
+        height: 297
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a2d86be783c37940800000000000000
+      internalID: 5292788975627981475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_3
+      rect:
+        serializedVersion: 2
+        x: 883
+        y: 1876
+        width: 222
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10f2a1766982f4f50800000000000000
+      internalID: 6867752583203270401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_4
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 1623
+        width: 266
+        height: 310
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61288ca2dad0d9810800000000000000
+      internalID: 1773588865652130326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_5
+      rect:
+        serializedVersion: 2
+        x: 1478
+        y: 1615
+        width: 281
+        height: 306
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ec55ea10de118980800000000000000
+      internalID: -8538509539364479768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_6
+      rect:
+        serializedVersion: 2
+        x: 1759
+        y: 1899
+        width: 226
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c6934e46af18dd00800000000000000
+      internalID: 997582116600649415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1332
+        width: 305
+        height: 293
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6093c57aa0450bf0800000000000000
+      internalID: -358809494441717650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_8
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1328
+        width: 305
+        height: 297
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 295cf44aa18bbb5a0800000000000000
+      internalID: -6504402812241197678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_9
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 1607
+        width: 314
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa0f29bdaff4624b0800000000000000
+      internalID: -5465593158923259729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_10
+      rect:
+        serializedVersion: 2
+        x: 1199
+        y: 1319
+        width: 290
+        height: 315
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8072df83dc651c40800000000000000
+      internalID: 5482407777300279434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_11
+      rect:
+        serializedVersion: 2
+        x: 1485
+        y: 1313
+        width: 287
+        height: 308
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3de32c122553373e0800000000000000
+      internalID: -2057241977908216109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_12
+      rect:
+        serializedVersion: 2
+        x: 1757
+        y: 1621
+        width: 271
+        height: 272
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dbaa1108dbc0f970800000000000000
+      internalID: 8786747001591737299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1015
+        width: 308
+        height: 322
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c5adc7126fc68330800000000000000
+      internalID: 3712882963026650569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_14
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 1007
+        width: 296
+        height: 324
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 886f1b8c9cfe8f510800000000000000
+      internalID: 1583278918955300488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_15
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 1319
+        width: 313
+        height: 294
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e51100c875d502870800000000000000
+      internalID: 8656021114398445918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_16
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 1009
+        width: 314
+        height: 313
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7517b78816b954db0800000000000000
+      internalID: -4808266183944212137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_17
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 1302
+        width: 290
+        height: 310
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bff5a473a64b39c0800000000000000
+      internalID: -3946482980609458247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_18
+      rect:
+        serializedVersion: 2
+        x: 1207
+        y: 996
+        width: 289
+        height: 327
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 992f1f6bc18e43bb0800000000000000
+      internalID: -4957082079802035559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_19
+      rect:
+        serializedVersion: 2
+        x: 1766
+        y: 1263
+        width: 222
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c8b8ca2f1cecab60800000000000000
+      internalID: 7758835876658460868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 708
+        width: 324
+        height: 313
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25adb9a3f22d9c690800000000000000
+      internalID: -7581297397412930990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_21
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 686
+        width: 305
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b24029ac5b5cfd60800000000000000
+      internalID: 7925309897797812914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_22
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 671
+        width: 309
+        height: 351
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58cf24c340dd2d860800000000000000
+      internalID: 7553342535314373765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_23
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 975
+        width: 286
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: baf384d5ba07864b0800000000000000
+      internalID: -5446979867997880405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_24
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 650
+        width: 303
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4671e6791244f3c0800000000000000
+      internalID: -4326760664860101044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_25
+      rect:
+        serializedVersion: 2
+        x: 1237
+        y: 671
+        width: 296
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e016cf07919932f0800000000000000
+      internalID: -992602164867755805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_26
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 957
+        width: 290
+        height: 307
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30ca3fd94e6d8b060800000000000000
+      internalID: 6969556700746722307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_27
+      rect:
+        serializedVersion: 2
+        x: 1815
+        y: 962
+        width: 215
+        height: 223
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37f74eba949fd4ba0800000000000000
+      internalID: -6102947825205346445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 359
+        width: 320
+        height: 354
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ec798cbfab358f20800000000000000
+      internalID: 3424208717653572835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_29
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 356
+        width: 330
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4556f81dcdfa4d480800000000000000
+      internalID: -8875275602696903340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_30
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 339
+        width: 300
+        height: 331
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 700e7ae9849e07a30800000000000000
+      internalID: 4211122149700132871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_31
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 326
+        width: 316
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37c4e2f38e7b1d090800000000000000
+      internalID: -8011420053995107213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_32
+      rect:
+        serializedVersion: 2
+        x: 1268
+        y: 351
+        width: 299
+        height: 319
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8385b8463edc54870800000000000000
+      internalID: 8666559434472511544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_33
+      rect:
+        serializedVersion: 2
+        x: 1562
+        y: 644
+        width: 319
+        height: 316
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b6d3a0e2d907a9e0800000000000000
+      internalID: -1610307540445047113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_34
+      rect:
+        serializedVersion: 2
+        x: 1567
+        y: 323
+        width: 310
+        height: 323
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4ff4892d9f6f2f70800000000000000
+      internalID: 9164666487519379277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 324
+        height: 363
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6485ee23f9c6fe10800000000000000
+      internalID: 2231192711709688938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_36
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 0
+        width: 318
+        height: 358
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8296325b7f434540800000000000000
+      internalID: 4990920203135521422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_37
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 1
+        width: 319
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7987475b16b263b40800000000000000
+      internalID: 5419566900243101847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_38
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 0
+        width: 307
+        height: 329
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8398250d62e37b20800000000000000
+      internalID: 3131095123818484620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_39
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 0
+        width: 294
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3dd35cb539923cc0800000000000000
+      internalID: -3732752685064790723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-IconsGame-33508fcb_40
+      rect:
+        serializedVersion: 2
+        x: 1547
+        y: 0
+        width: 310
+        height: 329
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67b0586a4265863f0800000000000000
+      internalID: -907380609502606474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_0: 4128550690663097066
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_1: -1598931958032458719
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_10: 5482407777300279434
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_11: -2057241977908216109
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_12: 8786747001591737299
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_13: 3712882963026650569
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_14: 1583278918955300488
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_15: 8656021114398445918
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_16: -4808266183944212137
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_17: -3946482980609458247
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_18: -4957082079802035559
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_19: 7758835876658460868
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_2: 5292788975627981475
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_20: -7581297397412930990
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_21: 7925309897797812914
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_22: 7553342535314373765
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_23: -5446979867997880405
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_24: -4326760664860101044
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_25: -992602164867755805
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_26: 6969556700746722307
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_27: -6102947825205346445
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_28: 3424208717653572835
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_29: -8875275602696903340
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_3: 6867752583203270401
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_30: 4211122149700132871
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_31: -8011420053995107213
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_32: 8666559434472511544
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_33: -1610307540445047113
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_34: 9164666487519379277
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_35: 2231192711709688938
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_36: 4990920203135521422
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_37: 5419566900243101847
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_38: 3131095123818484620
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_39: -3732752685064790723
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_4: 1773588865652130326
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_40: -907380609502606474
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_5: -8538509539364479768
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_6: 997582116600649415
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_7: -358809494441717650
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_8: -6504402812241197678
+      sactx-2048x2048-Crunch-IconsGame-33508fcb_9: -5465593158923259729
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

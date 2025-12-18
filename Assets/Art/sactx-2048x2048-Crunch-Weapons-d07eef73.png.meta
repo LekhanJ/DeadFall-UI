@@ -1,0 +1,1034 @@
+fileFormatVersion: 2
+guid: 303a3c6cbf1cd1c1a93be52b16c5dd74
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7171180813929942500
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_0
+  - first:
+      213: 8873576427774473077
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_1
+  - first:
+      213: 3580950355881488373
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_2
+  - first:
+      213: -2288657864451557033
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_3
+  - first:
+      213: -2911467338569958952
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_4
+  - first:
+      213: 4325830090377540015
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_5
+  - first:
+      213: -7901721280485025178
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_6
+  - first:
+      213: 8221375754398534022
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_7
+  - first:
+      213: -7090448057065810498
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_8
+  - first:
+      213: 748032965608027408
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_9
+  - first:
+      213: 2854694611304186402
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_10
+  - first:
+      213: -5307864260553977808
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_11
+  - first:
+      213: 4523314903669655673
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_12
+  - first:
+      213: -6374944242580601053
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_13
+  - first:
+      213: -5039611904885734535
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_14
+  - first:
+      213: -635836056833354193
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_15
+  - first:
+      213: -9209849295717667006
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_16
+  - first:
+      213: 4051288998888560783
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_17
+  - first:
+      213: -2509809445379228333
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_18
+  - first:
+      213: -8670314915166159078
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_19
+  - first:
+      213: -7614965410673110561
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_20
+  - first:
+      213: -8293235069405730851
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_21
+  - first:
+      213: -6719500380115907168
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_22
+  - first:
+      213: -9034037048762812297
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_23
+  - first:
+      213: 8840941802773247635
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_24
+  - first:
+      213: -6389831332987445744
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_25
+  - first:
+      213: 169836259386216642
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_26
+  - first:
+      213: -7293637710286231075
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_27
+  - first:
+      213: 1163768656450136515
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_28
+  - first:
+      213: -4878254399966295753
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_29
+  - first:
+      213: -4179399699430259362
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_30
+  - first:
+      213: 3358607877160726748
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_31
+  - first:
+      213: 8582395779490000469
+    second: sactx-2048x2048-Crunch-Weapons-d07eef73_32
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1668
+        width: 144
+        height: 145
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ed046aa4f6258360800000000000000
+      internalID: 7171180813929942500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_1
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 1610
+        width: 97
+        height: 351
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 573f6c03fb6452b70800000000000000
+      internalID: 8873576427774473077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_2
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 1686
+        width: 122
+        height: 151
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ffef90406712b130800000000000000
+      internalID: 3580950355881488373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_3
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 1330
+        width: 175
+        height: 553
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 759f5f05ccd0d30e0800000000000000
+      internalID: -2288657864451557033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_4
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 1813
+        width: 90
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d9b26591e36897d0800000000000000
+      internalID: -2911467338569958952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_5
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 838
+        width: 485
+        height: 1111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa136a74c8f680c30800000000000000
+      internalID: 4325830090377540015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_6
+      rect:
+        serializedVersion: 2
+        x: 1148
+        y: 1185
+        width: 301
+        height: 740
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66a9b8a4c52775290800000000000000
+      internalID: -7901721280485025178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_7
+      rect:
+        serializedVersion: 2
+        x: 1378
+        y: 1451
+        width: 193
+        height: 415
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6890fed90b1381270800000000000000
+      internalID: 8221375754398534022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_8
+      rect:
+        serializedVersion: 2
+        x: 1946
+        y: 1805
+        width: 81
+        height: 181
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb5db341f0ba99d90800000000000000
+      internalID: -7090448057065810498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1327
+        width: 79
+        height: 324
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 015395bd40c816a00800000000000000
+      internalID: 748032965608027408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_10
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 951
+        width: 109
+        height: 725
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2220209cf99ed9720800000000000000
+      internalID: 2854694611304186402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_11
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 831
+        width: 235
+        height: 871
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03050b9c39da656b0800000000000000
+      internalID: -5307864260553977808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_12
+      rect:
+        serializedVersion: 2
+        x: 1068
+        y: 1418
+        width: 89
+        height: 327
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 978c57870fa06ce30800000000000000
+      internalID: 4523314903669655673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_13
+      rect:
+        serializedVersion: 2
+        x: 1534
+        y: 1166
+        width: 324
+        height: 487
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 327cf0ebcf5a787a0800000000000000
+      internalID: -6374944242580601053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_14
+      rect:
+        serializedVersion: 2
+        x: 1562
+        y: 1644
+        width: 122
+        height: 147
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 973c47b6ca3bf0ab0800000000000000
+      internalID: -5039611904885734535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_15
+      rect:
+        serializedVersion: 2
+        x: 1842
+        y: 1077
+        width: 131
+        height: 574
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f261011a97e0d27f0800000000000000
+      internalID: -635836056833354193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 348
+        width: 545
+        height: 980
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24fedd58cda003080800000000000000
+      internalID: -9209849295717667006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_17
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 977
+        width: 170
+        height: 568
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f88533d31e1193830800000000000000
+      internalID: 4051288998888560783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_18
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 666
+        width: 104
+        height: 378
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35d30426b9d5b2dd0800000000000000
+      internalID: -2509809445379228333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_19
+      rect:
+        serializedVersion: 2
+        x: 1118
+        y: 809
+        width: 90
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1fffbe958adca780800000000000000
+      internalID: -8670314915166159078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_20
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 314
+        width: 255
+        height: 1099
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd151f70e45325690800000000000000
+      internalID: -7614965410673110561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_21
+      rect:
+        serializedVersion: 2
+        x: 1455
+        y: 318
+        width: 227
+        height: 865
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd76241d4a288ec80800000000000000
+      internalID: -8293235069405730851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_22
+      rect:
+        serializedVersion: 2
+        x: 1623
+        y: 847
+        width: 97
+        height: 328
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0adc617710a8fb2a0800000000000000
+      internalID: -6719500380115907168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_23
+      rect:
+        serializedVersion: 2
+        x: 1666
+        y: 533
+        width: 315
+        height: 548
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77836c42b27a0a280800000000000000
+      internalID: -9034037048762812297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_24
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 344
+        width: 213
+        height: 354
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39673327ab551ba70800000000000000
+      internalID: 8840941802773247635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_25
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 479
+        width: 411
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01e5f96e142c257a0800000000000000
+      internalID: -6389831332987445744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_26
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 0
+        width: 355
+        height: 483
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c052b69d216b5200800000000000000
+      internalID: 169836259386216642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_27
+      rect:
+        serializedVersion: 2
+        x: 1015
+        y: 0
+        width: 595
+        height: 805
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd9eef5552bc7ca90800000000000000
+      internalID: -7293637710286231075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_28
+      rect:
+        serializedVersion: 2
+        x: 1611
+        y: 0
+        width: 224
+        height: 543
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c9a1785d69862010800000000000000
+      internalID: 1163768656450136515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_29
+      rect:
+        serializedVersion: 2
+        x: 1836
+        y: 0
+        width: 178
+        height: 513
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 739c5062875fc4cb0800000000000000
+      internalID: -4878254399966295753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_30
+      rect:
+        serializedVersion: 2
+        x: 1934
+        y: 429
+        width: 114
+        height: 348
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e55c515ed1acff5c0800000000000000
+      internalID: -4179399699430259362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_31
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 345
+        height: 353
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd07ef1d11c2c9e20800000000000000
+      internalID: 3358607877160726748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_32
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 0
+        width: 314
+        height: 345
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55e205e6d7bca1770800000000000000
+      internalID: 8582395779490000469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_33
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 1538
+        width: 96
+        height: 322
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccd1ec63ba0cfca42a1cf9d95041fd2f
+      internalID: -298477808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-Crunch-Weapons-d07eef73_34
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 1861
+        width: 125
+        height: 159
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe759b4bb43174080b046b3ef7f13c9e
+      internalID: 2039262311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 4ae5415b301d74fe1a7f7d87543bda40
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sactx-2048x2048-Crunch-Weapons-d07eef73_0: 7171180813929942500
+      sactx-2048x2048-Crunch-Weapons-d07eef73_1: 8873576427774473077
+      sactx-2048x2048-Crunch-Weapons-d07eef73_10: 2854694611304186402
+      sactx-2048x2048-Crunch-Weapons-d07eef73_11: -5307864260553977808
+      sactx-2048x2048-Crunch-Weapons-d07eef73_12: 4523314903669655673
+      sactx-2048x2048-Crunch-Weapons-d07eef73_13: -6374944242580601053
+      sactx-2048x2048-Crunch-Weapons-d07eef73_14: -5039611904885734535
+      sactx-2048x2048-Crunch-Weapons-d07eef73_15: -635836056833354193
+      sactx-2048x2048-Crunch-Weapons-d07eef73_16: -9209849295717667006
+      sactx-2048x2048-Crunch-Weapons-d07eef73_17: 4051288998888560783
+      sactx-2048x2048-Crunch-Weapons-d07eef73_18: -2509809445379228333
+      sactx-2048x2048-Crunch-Weapons-d07eef73_19: -8670314915166159078
+      sactx-2048x2048-Crunch-Weapons-d07eef73_2: 3580950355881488373
+      sactx-2048x2048-Crunch-Weapons-d07eef73_20: -7614965410673110561
+      sactx-2048x2048-Crunch-Weapons-d07eef73_21: -8293235069405730851
+      sactx-2048x2048-Crunch-Weapons-d07eef73_22: -6719500380115907168
+      sactx-2048x2048-Crunch-Weapons-d07eef73_23: -9034037048762812297
+      sactx-2048x2048-Crunch-Weapons-d07eef73_24: 8840941802773247635
+      sactx-2048x2048-Crunch-Weapons-d07eef73_25: -6389831332987445744
+      sactx-2048x2048-Crunch-Weapons-d07eef73_26: 169836259386216642
+      sactx-2048x2048-Crunch-Weapons-d07eef73_27: -7293637710286231075
+      sactx-2048x2048-Crunch-Weapons-d07eef73_28: 1163768656450136515
+      sactx-2048x2048-Crunch-Weapons-d07eef73_29: -4878254399966295753
+      sactx-2048x2048-Crunch-Weapons-d07eef73_3: -2288657864451557033
+      sactx-2048x2048-Crunch-Weapons-d07eef73_30: -4179399699430259362
+      sactx-2048x2048-Crunch-Weapons-d07eef73_31: 3358607877160726748
+      sactx-2048x2048-Crunch-Weapons-d07eef73_32: 8582395779490000469
+      sactx-2048x2048-Crunch-Weapons-d07eef73_33: -298477808
+      sactx-2048x2048-Crunch-Weapons-d07eef73_34: 2039262311
+      sactx-2048x2048-Crunch-Weapons-d07eef73_4: -2911467338569958952
+      sactx-2048x2048-Crunch-Weapons-d07eef73_5: 4325830090377540015
+      sactx-2048x2048-Crunch-Weapons-d07eef73_6: -7901721280485025178
+      sactx-2048x2048-Crunch-Weapons-d07eef73_7: 8221375754398534022
+      sactx-2048x2048-Crunch-Weapons-d07eef73_8: -7090448057065810498
+      sactx-2048x2048-Crunch-Weapons-d07eef73_9: 748032965608027408
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

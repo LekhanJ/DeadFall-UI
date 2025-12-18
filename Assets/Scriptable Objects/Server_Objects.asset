@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ServerObjects
   Objects:
   - Name: Bullet
-    Prefab: {fileID: 4582508503534474006, guid: 357af6d6c337f946ea2c12b1cc95013e, type: 3}
+    Prefab: {fileID: 8001569232245100585, guid: 5d22bd8014b6708bb9f56bd531cefe04, type: 3}

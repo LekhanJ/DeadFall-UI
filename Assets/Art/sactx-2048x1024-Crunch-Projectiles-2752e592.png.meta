@@ -1,0 +1,598 @@
+fileFormatVersion: 2
+guid: 52cd54b60227228dd9058c0291606baf
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8905657040051314567
+    second: sactx-2048x1024-Crunch-Projectiles-2752e592_0
+  - first:
+      213: -1233183752682039823
+    second: sactx-2048x1024-Crunch-Projectiles-2752e592_1
+  - first:
+      213: -2567111675036265834
+    second: sactx-2048x1024-Crunch-Projectiles-2752e592_2
+  - first:
+      213: 4870656204538296377
+    second: sactx-2048x1024-Crunch-Projectiles-2752e592_3
+  - first:
+      213: 5603567427865878496
+    second: sactx-2048x1024-Crunch-Projectiles-2752e592_4
+  - first:
+      213: 8051920774058872060
+    second: sactx-2048x1024-Crunch-Projectiles-2752e592_5
+  - first:
+      213: -1362974701832516962
+    second: sactx-2048x1024-Crunch-Projectiles-2752e592_6
+  - first:
+      213: -8164887644152499386
+    second: sactx-2048x1024-Crunch-Projectiles-2752e592_7
+  - first:
+      213: -1427699656014997316
+    second: sactx-2048x1024-Crunch-Projectiles-2752e592_8
+  - first:
+      213: 5740389572961351392
+    second: sactx-2048x1024-Crunch-Projectiles-2752e592_9
+  - first:
+      213: -717846074185873680
+    second: sactx-2048x1024-Crunch-Projectiles-2752e592_10
+  - first:
+      213: 4511764870516495148
+    second: sactx-2048x1024-Crunch-Projectiles-2752e592_11
+  - first:
+      213: -5427108046112101669
+    second: sactx-2048x1024-Crunch-Projectiles-2752e592_12
+  - first:
+      213: 6234302112959954650
+    second: sactx-2048x1024-Crunch-Projectiles-2752e592_13
+  - first:
+      213: 8855785712392685496
+    second: sactx-2048x1024-Crunch-Projectiles-2752e592_14
+  - first:
+      213: 7065441189360254889
+    second: sactx-2048x1024-Crunch-Projectiles-2752e592_15
+  - first:
+      213: -4529948660918262956
+    second: sactx-2048x1024-Crunch-Projectiles-2752e592_16
+  - first:
+      213: -6400874184974512659
+    second: sactx-2048x1024-Crunch-Projectiles-2752e592_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sactx-2048x1024-Crunch-Projectiles-2752e592_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 394
+        width: 641
+        height: 627
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 970e8443b10c86480800000000000000
+      internalID: -8905657040051314567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x1024-Crunch-Projectiles-2752e592_1
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 867
+        width: 127
+        height: 132
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f59a9e19e9d2eee0800000000000000
+      internalID: -1233183752682039823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x1024-Crunch-Projectiles-2752e592_2
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 743
+        width: 256
+        height: 277
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69294be5889cf5cd0800000000000000
+      internalID: -2567111675036265834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x1024-Crunch-Projectiles-2752e592_3
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 689
+        width: 220
+        height: 254
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 938be8e130c089340800000000000000
+      internalID: 4870656204538296377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x1024-Crunch-Projectiles-2752e592_4
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 0
+        width: 513
+        height: 753
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ef15ecf2eed3cd40800000000000000
+      internalID: 5603567427865878496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x1024-Crunch-Projectiles-2752e592_5
+      rect:
+        serializedVersion: 2
+        x: 975
+        y: 613
+        width: 130
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfc0e59784b2ebf60800000000000000
+      internalID: 8051920774058872060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x1024-Crunch-Projectiles-2752e592_6
+      rect:
+        serializedVersion: 2
+        x: 1072
+        y: 733
+        width: 41
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9acd63eabdb51de0800000000000000
+      internalID: -1362974701832516962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x1024-Crunch-Projectiles-2752e592_7
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 495
+        width: 122
+        height: 134
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 643705372fd70be80800000000000000
+      internalID: -8164887644152499386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x1024-Crunch-Projectiles-2752e592_8
+      rect:
+        serializedVersion: 2
+        x: 1122
+        y: 438
+        width: 53
+        height: 81
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb857452abacf2ce0800000000000000
+      internalID: -1427699656014997316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x1024-Crunch-Projectiles-2752e592_9
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 555
+        width: 64
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e6b7b817e5f9af40800000000000000
+      internalID: 5740389572961351392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x1024-Crunch-Projectiles-2752e592_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 403
+        height: 391
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f60eb08cc2b906f0800000000000000
+      internalID: -717846074185873680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x1024-Crunch-Projectiles-2752e592_11
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 373
+        width: 114
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c23d831de320d9e30800000000000000
+      internalID: 4511764870516495148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x1024-Crunch-Projectiles-2752e592_12
+      rect:
+        serializedVersion: 2
+        x: 1215
+        y: 335
+        width: 114
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdae2d17cf90fa4b0800000000000000
+      internalID: -5427108046112101669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x1024-Crunch-Projectiles-2752e592_13
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 168
+        width: 138
+        height: 203
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adef171bdb0b48650800000000000000
+      internalID: 6234302112959954650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x1024-Crunch-Projectiles-2752e592_14
+      rect:
+        serializedVersion: 2
+        x: 1281
+        y: 247
+        width: 40
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b7452a7f2216ea70800000000000000
+      internalID: 8855785712392685496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x1024-Crunch-Projectiles-2752e592_15
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 0
+        width: 332
+        height: 117
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9af3b31d35d7d0260800000000000000
+      internalID: 7065441189360254889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x1024-Crunch-Projectiles-2752e592_16
+      rect:
+        serializedVersion: 2
+        x: 1244
+        y: 0
+        width: 141
+        height: 246
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 453e53f81b36221c0800000000000000
+      internalID: -4529948660918262956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x1024-Crunch-Projectiles-2752e592_17
+      rect:
+        serializedVersion: 2
+        x: 1367
+        y: 0
+        width: 98
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ded40a097d68b27a0800000000000000
+      internalID: -6400874184974512659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 97b1e27fc284e56afa3beb3ff6a44f16
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sactx-2048x1024-Crunch-Projectiles-2752e592_0: -8905657040051314567
+      sactx-2048x1024-Crunch-Projectiles-2752e592_1: -1233183752682039823
+      sactx-2048x1024-Crunch-Projectiles-2752e592_10: -717846074185873680
+      sactx-2048x1024-Crunch-Projectiles-2752e592_11: 4511764870516495148
+      sactx-2048x1024-Crunch-Projectiles-2752e592_12: -5427108046112101669
+      sactx-2048x1024-Crunch-Projectiles-2752e592_13: 6234302112959954650
+      sactx-2048x1024-Crunch-Projectiles-2752e592_14: 8855785712392685496
+      sactx-2048x1024-Crunch-Projectiles-2752e592_15: 7065441189360254889
+      sactx-2048x1024-Crunch-Projectiles-2752e592_16: -4529948660918262956
+      sactx-2048x1024-Crunch-Projectiles-2752e592_17: -6400874184974512659
+      sactx-2048x1024-Crunch-Projectiles-2752e592_2: -2567111675036265834
+      sactx-2048x1024-Crunch-Projectiles-2752e592_3: 4870656204538296377
+      sactx-2048x1024-Crunch-Projectiles-2752e592_4: 5603567427865878496
+      sactx-2048x1024-Crunch-Projectiles-2752e592_5: 8051920774058872060
+      sactx-2048x1024-Crunch-Projectiles-2752e592_6: -1362974701832516962
+      sactx-2048x1024-Crunch-Projectiles-2752e592_7: -8164887644152499386
+      sactx-2048x1024-Crunch-Projectiles-2752e592_8: -1427699656014997316
+      sactx-2048x1024-Crunch-Projectiles-2752e592_9: 5740389572961351392
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
