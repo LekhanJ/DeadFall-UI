@@ -21,9 +21,6 @@ public class NetworkClient : MonoBehaviour
     private Dictionary<string, GameObject> serverObjects = new();
     private GameObject localPlayer;
 
-    private Vector3 lastSentPosition;
-    private float stillTimer;
-
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -60,8 +57,8 @@ public class NetworkClient : MonoBehaviour
                 case "spawn":
                     HandleSpawn(data);
                     break;
-                case "updatePosition":
-                    HandlePositionUpdate(data);
+                case "serverPositionUpdate":
+                    HandleServerPositionUpdate(data);
                     break;
                 case "player_left":
                     HandlePlayerLeft(data);
@@ -109,11 +106,6 @@ public class NetworkClient : MonoBehaviour
         #if !UNITY_WEBGL || UNITY_EDITOR
             websocket?.DispatchMessageQueue();
         #endif
-
-        if (localPlayer != null)
-        {
-            SendLocalPosition();
-        }
     }
 
     // -------------------- handlers --------------------
@@ -139,10 +131,9 @@ public class NetworkClient : MonoBehaviour
         serverObjects[p.sessionId].transform.position = new Vector3(p.position.x, p.position.y, 0f);
     }
 
-    void HandlePositionUpdate(JObject data)
+    void HandleServerPositionUpdate(JObject data)
     {
         string id = data["sessionId"]!.ToString();
-        if (id == ClientID) return;
         if (!serverObjects.TryGetValue(id, out GameObject obj)) return;
 
         Position pos = data["position"].ToObject<Position>();
@@ -179,7 +170,6 @@ public class NetworkClient : MonoBehaviour
         Vector2 p = new Vector2(pos.x, pos.y);
         Vector2 d = new Vector2(dir.x, dir.y);
 
-        // Load weapon-specific bullet if needed
         GameObject bullet = Instantiate(bulletPrefab, p, Quaternion.identity, networkContainer);
         bullet.GetComponent<Bullet>().Init(d);
     }
@@ -191,13 +181,17 @@ public class NetworkClient : MonoBehaviour
 
         int health = data["health"]!.Value<int>();
         int maxHealth = data["maxHealth"]!.Value<int>();
+        int shield = data["shield"].Value<int>();
+        int maxShield = data["maxShield"].Value<int>();
 
         var hp = obj.GetComponent<PlayerHealth>();
         if (hp == null) return;
 
         hp.maxHealth = maxHealth;
-        hp.SetHealth(health);
+        hp.maxShield = maxShield;
+        hp.SetHealth(health, shield);
     }
+
 
     void HandlePlayerKilled(JObject data)
     {
@@ -228,14 +222,20 @@ public class NetworkClient : MonoBehaviour
         {
             ServerObjectData sod = serverSpawnables.GetObjectByName(name);
             spawnedObject = Instantiate(sod.Prefab, networkContainer);
+            spawnedObject.GetComponent<NetworkIdentity>().SetId(id);
             spawnedObject.transform.position = new Vector3(pos.x, pos.y, 0);
 
             if (name == "Bullet") 
             {
                 Position direction = data["direction"].ToObject<Position>();
+                string activator = data["activator"]!.ToString();
+
                 float rot = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 Vector3 currentRotation = new Vector3(0, 0, rot - 90);
                 spawnedObject.transform.rotation = Quaternion.Euler(currentRotation);
+
+                WhoActivatedMe whoActivatedMe = spawnedObject.GetComponent<WhoActivatedMe>();
+                whoActivatedMe.SetActivator(activator);
             }
 
             serverObjects.Add(id, spawnedObject);
@@ -264,7 +264,7 @@ public class NetworkClient : MonoBehaviour
     void HandleInventorySwitch(JObject data)
     {
         string id = data["sessionId"]!.ToString();
-        if (id == ClientID) return; // Don't handle our own
+        if (id == ClientID) return;
         if (!serverObjects.TryGetValue(id, out GameObject player)) return;
 
         int slotIndex = data["slotIndex"]!.Value<int>();
@@ -285,50 +285,25 @@ public class NetworkClient : MonoBehaviour
 
         Debug.Log($"Player {attackerId} punched {targetId} for {damage} damage");
 
-        // Apply damage locally if needed
         if (targetId == ClientID)
         {
-            // Take damage
             Debug.Log("You got punched!");
         }
     }
 
     // -------------------- sending --------------------
 
-    void SendLocalPosition()
+    public async void SendMovementInput(float horizontal, float vertical)
     {
-        Vector3 pos = localPlayer.transform.position;
-
-        if (Vector3.Distance(pos, lastSentPosition) > 0.001f)
-        {
-            stillTimer = 0f;
-            lastSentPosition = pos;
-            SendPositionNow(pos);
-        }
-        else
-        {
-            stillTimer += Time.deltaTime;
-            if (stillTimer >= 1f)
-            {
-                stillTimer = 0f;
-                SendPositionNow(pos);
-            }
-        }
-    }
-
-    void SendPositionNow(Vector3 pos)
-    {
-        Position p = new Position {
-            x = Mathf.Round(pos.x * 1000f) / 1000f,
-            y = Mathf.Round(pos.y * 1000f) / 1000f
-        };
+        if (websocket.State != WebSocketState.Open) return;
 
         JObject msg = JObject.FromObject(new {
-            type = "updatePosition",
-            position = p
+            type = "moveInput",
+            horizontal = horizontal,
+            vertical = vertical
         });
 
-        websocket.SendText(msg.ToString());
+        await websocket.SendText(msg.ToString());
     }
 
     public async void SendAim(Vector2 dir)
@@ -360,6 +335,7 @@ public class NetworkClient : MonoBehaviour
                 y = bulletData.direction.y
             },
             bulletId = bulletData.id,
+            activator = ClientID,
             weaponName = weaponName
         });
 
@@ -388,7 +364,6 @@ public class NetworkClient : MonoBehaviour
     {
         if (websocket.State != WebSocketState.Open) return;
 
-        // Extract target ID from name
         string targetId = ExtractIdFromPlayerName(targetName);
 
         JObject msg = JObject.FromObject(new {
@@ -400,9 +375,20 @@ public class NetworkClient : MonoBehaviour
         await websocket.SendText(msg.ToString());
     }
 
+    public async void SendCollisionDestroy(string id) 
+    {
+        if (websocket.State != WebSocketState.Open) return;
+
+        JObject msg = JObject.FromObject(new {
+            type = "bulletCollide",
+            id = id
+        });
+
+        await websocket.SendText(msg.ToString());
+    }
+
     string ExtractIdFromPlayerName(string playerName)
     {
-        // Player names are like "Player_<id>" or "Player_<id>_LOCAL"
         string[] parts = playerName.Split('_');
         if (parts.Length >= 2)
         {
@@ -420,12 +406,13 @@ public class NetworkClient : MonoBehaviour
         GameObject obj = Instantiate(playerPrefab, networkContainer);
         obj.name = isLocal ? $"Player_{id}_LOCAL" : $"Player_{id}";
 
+        obj.GetComponent<NetworkIdentity>().SetId(id);
+
         serverObjects[id] = obj;
 
         if (isLocal)
         {
             localPlayer = obj;
-            lastSentPosition = obj.transform.position;
             Camera.main.GetComponent<CameraController>().SetTarget(localPlayer.transform);
         }
     }
@@ -459,6 +446,12 @@ public class PlayerRotation {
 [System.Serializable]
 public class BulletData {
     public string id;
+    public string activator;
     public Position position;
     public Position direction;
+}
+
+[System.Serializable]
+public class IDData {
+    public string id;
 }

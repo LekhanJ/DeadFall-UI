@@ -3,28 +3,22 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 100;
-    [SerializeField] private int currentHealth;
+    public int maxShield = 100;
 
-    public bool IsDead => currentHealth <= 0;
+    private int health;
+    private int shield;
 
-    void Awake()
+    public void SetHealth(int newHealth, int newShield)
     {
-        currentHealth = maxHealth;
-    }
+        health = newHealth;
+        shield = newShield;
 
-    public void SetHealth(int health)
-    {
-        currentHealth = Mathf.Clamp(health, 0, maxHealth);
-
-        // TODO: update HP bar / UI if you have one
-        // Debug.Log($"{name} health = {currentHealth}");
+        // update UI later
     }
 
     public void Die()
     {
-        // simple version: just disable for now
-        Debug.Log($"{name} died!");
-        // play animation, particle, etc.
         gameObject.SetActive(false);
     }
 }
+

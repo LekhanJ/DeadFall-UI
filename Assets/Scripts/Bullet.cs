@@ -17,13 +17,4 @@ public class Bullet : MonoBehaviour
 
         Destroy(gameObject, lifetime);
     }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))   // avoid hitting walls, etc.
-        {
-            Debug.Log("Bullet hit: " + other.gameObject.name);
-            Destroy(gameObject);
-        }
-    }
 }

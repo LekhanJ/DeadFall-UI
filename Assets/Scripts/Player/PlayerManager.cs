@@ -1,55 +1,52 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerManager : MonoBehaviour
 {
-    [Header("Movement")]
-    public float moveSpeed = 5f;
-
     [Header("Aiming")]
-    public Transform aimPivot;   
-
-    Rigidbody2D rb;
-    Camera cam;
-    bool isLocal;
-
+    public Transform aimPivot;
+    
+    private Camera cam;
+    private bool isLocal;
+    
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
-
         isLocal = gameObject.name.Contains("_LOCAL");
-
+        
         if (!isLocal)
         {
-            rb.simulated = false;
+            // Disable input handling for remote players
             enabled = false;
         }
     }
-
+    
     void Update()
     {
+        if (!isLocal) return;
+        
+        HandleMovementInput();
         HandleAim();
     }
-
-    void FixedUpdate()
+    
+    void HandleMovementInput()
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
-        Vector2 move = new Vector2(h, v).normalized;
-
-        rb.linearVelocity = move * moveSpeed;
+        
+        // Send input to server
+        NetworkClient.Instance.SendMovementInput(h, v);
     }
-
+    
     void HandleAim()
     {
         Vector3 mouseWorld = cam.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 dir = mouseWorld - transform.position;
-
+        Vector2 dir = (mouseWorld - transform.position).normalized;
+        
+        // Apply rotation locally for immediate feedback
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
-
         aimPivot.rotation = Quaternion.Euler(0, 0, angle);
-
-        NetworkClient.Instance.SendAim(dir.normalized);
+        
+        // Send aim direction to server
+        NetworkClient.Instance.SendAim(dir);
     }
 }

@@ -102,6 +102,9 @@ GameObject:
   - component: {fileID: 1017698931627390331}
   - component: {fileID: 3065914816704373595}
   - component: {fileID: 6599489128696931393}
+  - component: {fileID: 4063332670100506032}
+  - component: {fileID: 2429183970880708937}
+  - component: {fileID: -736147258830144948}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -150,7 +153,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &3065914816704373595
 CircleCollider2D:
@@ -186,8 +189,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.00341779, y: 0.043925256}
-  m_Radius: 0.09077054
+  m_Offset: {x: 0.00024037063, y: 0.043925237}
+  m_Radius: 0.09394796
 --- !u!114 &6599489128696931393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,3 +205,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
   speed: 15
   lifetime: 2
+--- !u!114 &4063332670100506032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8001569232245100585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d630f0d14f5bf005b21ed80e1aa4876, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NetworkIdentity
+  id: 
+--- !u!114 &2429183970880708937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8001569232245100585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ff8a50ea4d4f0349b9389c8985fd346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WhoActivatedMe
+  whoActivatedMe: 
+--- !u!114 &-736147258830144948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8001569232245100585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3993e62df484734ab3932b51db69039, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionDestroy
+  networkIdentity: {fileID: 4063332670100506032}
+  whoActivatedMe: {fileID: 2429183970880708937}
