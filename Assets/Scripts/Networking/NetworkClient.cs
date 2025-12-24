@@ -413,7 +413,16 @@ public class NetworkClient : MonoBehaviour
         if (isLocal)
         {
             localPlayer = obj;
+            
             Camera.main.GetComponent<CameraController>().SetTarget(localPlayer.transform);
+
+            PlayerHealthUI ui =
+            FindFirstObjectByType<PlayerHealthUI>();
+
+            PlayerHealth health =
+                localPlayer.GetComponent<PlayerHealth>();
+
+            ui.Bind(health);
         }
     }
 
