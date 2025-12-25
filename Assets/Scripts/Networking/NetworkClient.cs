@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using NativeWebSocket;
 using Newtonsoft.Json.Linq;
+using System.Collections;
 
 public class NetworkClient : MonoBehaviour
 {
@@ -113,6 +114,8 @@ public class NetworkClient : MonoBehaviour
     void HandleInitialState(JObject data)
     {
         ClientID = data["sessionId"]!.ToString();
+        Debug.Log($"🟢 CLIENT ID SET: {ClientID}");
+        
         SpawnPlayer(ClientID, true);
 
         foreach (var other in data["others"]!)
@@ -405,26 +408,25 @@ public class NetworkClient : MonoBehaviour
 
         GameObject obj = Instantiate(playerPrefab, networkContainer);
         obj.name = isLocal ? $"Player_{id}_LOCAL" : $"Player_{id}";
+        
+        Debug.Log($"🟢 Spawned player: {obj.name}");
 
         obj.GetComponent<NetworkIdentity>().SetId(id);
-
         serverObjects[id] = obj;
 
         if (isLocal)
         {
             localPlayer = obj;
-            
-            Camera.main.GetComponent<CameraController>().SetTarget(localPlayer.transform);
+            Debug.Log($"🟢 Local player set: {localPlayer.name}");
 
-            PlayerHealthUI ui =
-            FindFirstObjectByType<PlayerHealthUI>();
+            Camera.main
+                .GetComponent<CameraController>()
+                .SetTarget(localPlayer.transform);
 
-            PlayerHealth health =
-                localPlayer.GetComponent<PlayerHealth>();
-
-            ui.Bind(health);
+            Debug.Log($"✅ Local player fully initialized: {obj.name}");
         }
     }
+
 
     private async void OnApplicationQuit()
     {
