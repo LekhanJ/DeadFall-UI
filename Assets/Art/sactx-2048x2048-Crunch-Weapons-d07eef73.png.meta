@@ -564,10 +564,10 @@ TextureImporter:
       name: sactx-2048x2048-Crunch-Weapons-d07eef73_16
       rect:
         serializedVersion: 2
-        x: 0
-        y: 348
-        width: 545
-        height: 980
+        x: 368
+        y: 768
+        width: 176
+        height: 207
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

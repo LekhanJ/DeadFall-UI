@@ -9,44 +9,33 @@ public class InventorySystem : MonoBehaviour
     private int currentSlotIndex = 0;
 
     [Header("Weapon Holder")]
-    public Transform weaponHolder; // Child transform where weapons are visually held
+    public Transform weaponHolder;
 
-    private GameObject currentWeaponObject;
+    private GameObject currentItemObject;
     private bool isLocal;
 
+    [Header("Item Visuals")]
     [SerializeField] private GameObject handPrefab;
+    [SerializeField] private GameObject healthPackVisual;
+    [SerializeField] private GameObject shieldPackVisual;
+    [SerializeField] private GameObject grenadeVisual;
 
+    [Header("Hand Sprites")]
+    [SerializeField] private SpriteRenderer leftHand;
+    [SerializeField] private SpriteRenderer rightHand;
 
     void Awake()
     {
-        // Initialize inventory with empty slots
+        // Initialize with empty slots
         for (int i = 0; i < maxSlots; i++)
         {
             inventory.Add(null);
         }
-
-        // Slot 0 is always the hand (melee/punch)
-        inventory[0] = new InventoryItem
-        {
-            itemType = ItemType.Melee,
-            itemName = "Hand",
-            weaponData = null
-        };
     }
 
     void Start()
     {
         isLocal = gameObject.name.Contains("_LOCAL");
-
-        if (isLocal)
-        {
-            // Example: Add starting weapons
-            AddItemToSlot(1, CreatePistolItem());
-            Debug.Log("Pistol added to slot 1");
-            AddItemToSlot(2, CreateRifleItem());
-        }
-
-        EquipSlot(currentSlotIndex);
     }
 
     void Update()
@@ -63,7 +52,7 @@ public class InventorySystem : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Alpha1 + i))
             {
-                SwitchToSlot(i);
+                RequestSlotSwitch(i);
             }
         }
 
@@ -71,77 +60,260 @@ public class InventorySystem : MonoBehaviour
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         if (scroll > 0f)
         {
-            SwitchToSlot((currentSlotIndex - 1 + maxSlots) % maxSlots);
+            int nextSlot = (currentSlotIndex - 1 + maxSlots) % maxSlots;
+            RequestSlotSwitch(nextSlot);
         }
         else if (scroll < 0f)
         {
-            SwitchToSlot((currentSlotIndex + 1) % maxSlots);
+            int nextSlot = (currentSlotIndex + 1) % maxSlots;
+            RequestSlotSwitch(nextSlot);
+        }
+
+        // Use consumables with E key
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            InventoryItem item = GetCurrentItem();
+            if (item != null && (item.itemType == "Health" || item.itemType == "Shield"))
+            {
+                NetworkClient.Instance.SendUseItem(currentSlotIndex);
+            }
+        }
+
+        // Throw grenade with G key (only if holding grenade)
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            InventoryItem item = GetCurrentItem();
+            if (item != null && item.itemType == "Grenade" && item.amount > 0)
+            {
+                // Throw from player position towards mouse
+                Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 throwDirection = (mouseWorld - transform.position).normalized;
+                
+                // Spawn position slightly in front of player
+                Vector2 spawnPos = (Vector2)transform.position + throwDirection * 0.5f;
+                
+                NetworkClient.Instance.SendThrowGrenade(spawnPos, throwDirection);
+            }
         }
     }
 
-    public void SwitchToSlot(int slotIndex)
+    void RequestSlotSwitch(int slotIndex)
     {
         if (slotIndex < 0 || slotIndex >= maxSlots) return;
-        if (slotIndex == currentSlotIndex) return;
         if (inventory[slotIndex] == null) return;
 
-        currentSlotIndex = slotIndex;
-        EquipSlot(currentSlotIndex);
-
         // Send to server
-        NetworkClient.Instance.SendInventorySwitch(currentSlotIndex);
+        NetworkClient.Instance.SendInventorySwitch(slotIndex);
     }
 
-    public void EquipSlot(int slotIndex)
+    // Called by NetworkClient when server confirms slot switch
+    public void UpdateInventoryFromServer(int slotIndex, InventoryItem item)
     {
-        // Destroy current weapon visual
-        if (currentWeaponObject != null)
+        currentSlotIndex = slotIndex;
+        EquipSlot(slotIndex, item);
+    }
+
+    // Called by NetworkClient when full inventory is received
+    public void SetFullInventory(InventoryItem[] items, int currentIndex)
+    {
+        inventory.Clear();
+        
+        for (int i = 0; i < maxSlots; i++)
         {
-            Destroy(currentWeaponObject);
+            if (i < items.Length)
+            {
+                inventory.Add(items[i]);
+            }
+            else
+            {
+                inventory.Add(null);
+            }
         }
 
-        InventoryItem item = inventory[slotIndex];
-        if (item == null) return;
+        currentSlotIndex = currentIndex;
+        EquipSlot(currentSlotIndex, items[currentIndex]);
+    }
 
-        // Spawn weapon visual
-        if (item.itemType == ItemType.Gun && item.weaponData != null)
+    void EquipSlot(int slotIndex, InventoryItem item)
+    {
+        // Destroy current item visual
+        if (currentItemObject != null)
         {
-            currentWeaponObject = Instantiate(item.weaponData.weaponPrefab, weaponHolder);
-            currentWeaponObject.transform.localPosition = Vector3.zero;
-            currentWeaponObject.transform.localRotation = Quaternion.identity;
-
-            // Update WeaponController's fire point reference
-            UpdateFirePointReference();
+            Destroy(currentItemObject);
         }
-        else if (item.itemType == ItemType.Melee)
+
+        if (item == null) {
+            leftHand.enabled = true;
+            rightHand.enabled = true;
+            return;
+        }
+
+        // Spawn item visual based on type
+        switch (item.itemType)
         {
-            // Hand has no visual, or you can add a fist sprite
-            currentWeaponObject = Instantiate(handPrefab, weaponHolder);
-            currentWeaponObject.transform.localPosition = Vector3.zero;
-            currentWeaponObject.transform.localRotation = Quaternion.identity;
-            
-            // Clear fire point reference for melee
+            case "Weapon":
+                if (!string.IsNullOrEmpty(item.weaponName))
+                {
+                    SpawnWeapon(item.weaponName);
+                }
+                break;
+
+            case "Hand":
+                SpawnHand();
+                break;
+
+            case "Health":
+                SpawnHealth();
+                break;
+
+            case "Shield":
+                SpawnShield();
+                break;
+
+            case "Grenade":
+                SpawnGrenade();
+                break;
+        }
+
+        Debug.Log($"Equipped: {item.itemType} - {item.itemName}" + 
+                  (item.amount > 0 ? $" x{item.amount}" : ""));
+    }
+
+    void SpawnWeapon(string weaponName)
+    {
+        WeaponData weaponData = Resources.Load<WeaponData>($"Weapons/{weaponName}");
+        if (weaponData != null && weaponData.weaponPrefab != null)
+        {   
+            leftHand.enabled = false;
+            rightHand.enabled = false;
+            currentItemObject = Instantiate(weaponData.weaponPrefab, weaponHolder);
+            currentItemObject.transform.localPosition = Vector3.zero;
+            currentItemObject.transform.localRotation = Quaternion.identity;
+
+            if (isLocal)
+            {
+                UpdateFirePointReference();
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"Weapon '{weaponName}' not found in Resources/Weapons/");
+        }
+    }
+
+    void SpawnHand()
+    {
+        if (handPrefab != null)
+        {
+            leftHand.enabled = true;
+            rightHand.enabled = true;
+            currentItemObject = Instantiate(handPrefab, weaponHolder);
+            currentItemObject.transform.localPosition = Vector3.zero;
+            currentItemObject.transform.localRotation = Quaternion.identity;
+        }
+
+        if (isLocal)
+        {
             WeaponController weaponController = GetComponent<WeaponController>();
             if (weaponController != null)
             {
-                weaponController.SetFirePoint(null);
+                weaponController.SetFirePoint(null); // Melee doesn't need fire point
             }
+        }
+    }
+
+    void SpawnHealth()
+    {
+        // Optional: Show visual of health pack in hand
+        if (healthPackVisual != null)
+        {
+            leftHand.enabled = false;
+            rightHand.enabled = false;
+            currentItemObject = Instantiate(healthPackVisual, weaponHolder);
+            Debug.Log("Current Item Object is : " + currentItemObject);
+            currentItemObject.transform.localPosition = Vector3.zero;
+            currentItemObject.transform.localRotation = Quaternion.identity;
+        }
+
+        if (isLocal)
+        {
+            WeaponController weaponController = GetComponent<WeaponController>();
+            if (weaponController != null)
+            {
+                weaponController.SetFirePoint(null); // Consumables don't shoot
+            }
+        }
+
+        // Optional: Show UI hint "Press E to use"
+        Debug.Log("Health pack equipped - Press E to use");
+    }
+
+    void SpawnShield()
+    {
+        // Optional: Show visual of shield pack in hand
+        if (shieldPackVisual != null)
+        {
+            leftHand.enabled = false;
+            rightHand.enabled = false;
+            currentItemObject = Instantiate(shieldPackVisual, weaponHolder);
+            Debug.Log("Current Item Object is : " + currentItemObject);
+            currentItemObject.transform.localPosition = Vector3.zero;
+            currentItemObject.transform.localRotation = Quaternion.identity;
+        }
+
+        if (isLocal)
+        {
+            WeaponController weaponController = GetComponent<WeaponController>();
+            if (weaponController != null)
+            {
+                weaponController.SetFirePoint(null); // Consumables don't shoot
+            }
+        }
+
+        // Optional: Show UI hint "Press E to use"
+        Debug.Log("Shield pack equipped - Press E to use");
+    }
+
+    void SpawnGrenade()
+    {
+        // Optional: Show visual of grenade in hand
+        if (grenadeVisual != null)
+        {
+            leftHand.enabled = false;
+            rightHand.enabled = false;
+            currentItemObject = Instantiate(grenadeVisual, weaponHolder);
+            currentItemObject.transform.localPosition = Vector3.zero;
+            currentItemObject.transform.localRotation = Quaternion.identity;
+        }
+
+        if (isLocal)
+        {
+            WeaponController weaponController = GetComponent<WeaponController>();
+            if (weaponController != null)
+            {
+                weaponController.SetFirePoint(null); // Grenades are thrown, not shot
+            }
+        }
+
+        // Optional: Show UI hint "Press G to throw"
+        InventoryItem item = GetCurrentItem();
+        if (item != null)
+        {
+            Debug.Log($"Grenade equipped - Press G to throw ({item.amount} remaining)");
         }
     }
 
     void UpdateFirePointReference()
     {
-        if (currentWeaponObject == null) return;
+        if (currentItemObject == null) return;
 
-        // Find the "FirePoint" child transform in the weapon
-        Transform firePoint = currentWeaponObject.transform.Find("FirePoint");
+        Transform firePoint = currentItemObject.transform.Find("FirePoint");
         
         if (firePoint == null)
         {
-            Debug.LogWarning($"Weapon {currentWeaponObject.name} is missing a 'FirePoint' child transform!");
+            Debug.LogWarning($"Weapon {currentItemObject.name} is missing a 'FirePoint' child!");
         }
 
-        // Update WeaponController's reference
         WeaponController weaponController = GetComponent<WeaponController>();
         if (weaponController != null)
         {
@@ -149,34 +321,10 @@ public class InventorySystem : MonoBehaviour
         }
     }
 
-    public void EquipSlotForRemotePlayer(int slotIndex, string weaponName)
-    {
-        // For other players, just show the weapon visual
-        if (currentWeaponObject != null)
-        {
-            Destroy(currentWeaponObject);
-        }
-
-        if (slotIndex == 0 || string.IsNullOrEmpty(weaponName))
-        {
-            // Hand or empty
-            return;
-        }
-
-        // Load weapon data by name
-        WeaponData weaponData = Resources.Load<WeaponData>($"Weapons/{weaponName}");
-        if (weaponData != null && weaponData.weaponPrefab != null)
-        {
-            currentWeaponObject = Instantiate(weaponData.weaponPrefab, weaponHolder);
-            currentWeaponObject.transform.localPosition = Vector3.zero;
-            currentWeaponObject.transform.localRotation = Quaternion.identity;
-            
-            // Remote players don't need fire point updates since they don't shoot locally
-        }
-    }
-
     public InventoryItem GetCurrentItem()
     {
+        if (currentSlotIndex < 0 || currentSlotIndex >= inventory.Count)
+            return null;
         return inventory[currentSlotIndex];
     }
 
@@ -185,49 +333,17 @@ public class InventorySystem : MonoBehaviour
         return currentSlotIndex;
     }
 
-    public void AddItemToSlot(int slotIndex, InventoryItem item)
+    public List<InventoryItem> GetAllItems()
     {
-        if (slotIndex < 0 || slotIndex >= maxSlots) return;
-        if (slotIndex == 0) return; // Can't replace hand
-
-        inventory[slotIndex] = item;
-    }
-
-    // Helper methods to create items
-    private InventoryItem CreatePistolItem()
-    {
-        WeaponData pistol = Resources.Load<WeaponData>("Weapons/Pistol");
-        return new InventoryItem
-        {
-            itemType = ItemType.Gun,
-            itemName = "Pistol",
-            weaponData = pistol
-        };
-    }
-
-    private InventoryItem CreateRifleItem()
-    {
-        WeaponData rifle = Resources.Load<WeaponData>("Weapons/Rifle");
-        return new InventoryItem
-        {
-            itemType = ItemType.Gun,
-            itemName = "Rifle",
-            weaponData = rifle
-        };
+        return inventory;
     }
 }
 
 [System.Serializable]
 public class InventoryItem
 {
-    public ItemType itemType;
+    public string itemType;      // "Hand", "Weapon", "Health", "Shield", "Grenade"
     public string itemName;
-    public WeaponData weaponData; // null for melee
-}
-
-public enum ItemType
-{
-    Melee,
-    Gun,
-    Consumable
+    public string weaponName;    // For weapons
+    public int amount;           // For consumables
 }

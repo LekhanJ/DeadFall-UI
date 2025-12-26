@@ -10,7 +10,7 @@ public class WeaponController : MonoBehaviour
     private int currentAmmo;
     private bool isReloading = false;
     private float nextFireTime = 0f;
-    private Transform currentFirePoint; // Current weapon's fire point
+    private Transform currentFirePoint;
 
     void Start()
     {
@@ -32,20 +32,26 @@ public class WeaponController : MonoBehaviour
         
         if (currentItem == null) return;
 
-        if (currentItem.itemType == ItemType.Melee)
+        if (currentItem.itemType == "Hand")
         {
             HandleMeleeAttack();
         }
-        else if (currentItem.itemType == ItemType.Gun)
+        else if (currentItem.itemType == "Weapon")
         {
-            HandleGunShooting(currentItem.weaponData);
-        }
+            WeaponData weaponData = GetWeaponData(currentItem.weaponName);
+            if (weaponData != null)
+            {
+                HandleGunShooting(weaponData);
 
-        // Reload key
-        if (Input.GetKeyDown(KeyCode.R) && currentItem.itemType == ItemType.Gun)
-        {
-            StartReload(currentItem.weaponData);
+                // Reload key
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    StartReload(weaponData);
+                }
+            }
         }
+        // Note: Consumables (Health, Shield) are handled in InventorySystem with E key
+        // Grenades are handled in InventorySystem with G key
     }
 
     void HandleMeleeAttack()
@@ -54,14 +60,12 @@ public class WeaponController : MonoBehaviour
         {
             nextFireTime = Time.time + 0.5f; // Melee cooldown
 
-            // Perform melee attack
             PerformMeleePunch();
         }
     }
 
     void PerformMeleePunch()
     {
-        // Raycast or overlap circle to detect enemies in front
         Vector3 mouseWorld = cam.ScreenToWorldPoint(Input.mousePosition);
         Vector2 punchDirection = (mouseWorld - transform.position).normalized;
 
@@ -71,18 +75,15 @@ public class WeaponController : MonoBehaviour
         {
             Debug.Log("Punched: " + hit.collider.name);
             
-            // Send melee attack to server
-            NetworkClient.Instance.SendMeleeAttack(hit.collider.name, 15f); // 15 damage
+            NetworkClient.Instance.SendMeleeAttack(hit.collider.name, 15f);
         }
 
-        // Visual feedback
         Debug.DrawRay(transform.position, punchDirection * 1.5f, Color.red, 0.5f);
     }
 
     void HandleGunShooting(WeaponData weapon)
     {
         if (weapon == null) return;
-
         if (isReloading) return;
 
         // Initialize ammo if needed
@@ -105,7 +106,6 @@ public class WeaponController : MonoBehaviour
 
             FireBullet(weapon);
 
-            // UI update (if you have ammo counter)
             Debug.Log($"Ammo: {currentAmmo}/{weapon.magazineCapacity}");
         }
     }
@@ -118,11 +118,9 @@ public class WeaponController : MonoBehaviour
             return;
         }
 
-        // Use the weapon's fire point position and direction
         Vector3 firePointWorldPos = currentFirePoint.position;
         Vector2 direction = currentFirePoint.up;
 
-        // Send to server
         BulletData bulletData = new BulletData
         {
             id = System.Guid.NewGuid().ToString(),
@@ -155,15 +153,25 @@ public class WeaponController : MonoBehaviour
     void FinishReload()
     {
         InventoryItem currentItem = inventory.GetCurrentItem();
-        if (currentItem != null && currentItem.weaponData != null)
+        if (currentItem != null && currentItem.itemType == "Weapon")
         {
-            currentAmmo = currentItem.weaponData.magazineCapacity;
-            isReloading = false;
-            Debug.Log("Reload complete!");
+            WeaponData weaponData = GetWeaponData(currentItem.weaponName);
+            if (weaponData != null)
+            {
+                currentAmmo = weaponData.magazineCapacity;
+                isReloading = false;
+                Debug.Log("Reload complete!");
+            }
         }
     }
 
-    // Public getter for UI
+    WeaponData GetWeaponData(string weaponName)
+    {
+        if (string.IsNullOrEmpty(weaponName)) return null;
+        return Resources.Load<WeaponData>($"Weapons/{weaponName}");
+    }
+
+    // Public getters for UI
     public int GetCurrentAmmo()
     {
         return currentAmmo;
@@ -178,5 +186,19 @@ public class WeaponController : MonoBehaviour
     public void SetFirePoint(Transform firePoint)
     {
         currentFirePoint = firePoint;
+        
+        // Reset ammo when switching weapons
+        if (firePoint != null)
+        {
+            InventoryItem currentItem = inventory.GetCurrentItem();
+            if (currentItem != null && currentItem.itemType == "Weapon")
+            {
+                WeaponData weaponData = GetWeaponData(currentItem.weaponName);
+                if (weaponData != null)
+                {
+                    currentAmmo = weaponData.magazineCapacity;
+                }
+            }
+        }
     }
 }

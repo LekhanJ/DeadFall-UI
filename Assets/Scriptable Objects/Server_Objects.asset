@@ -15,3 +15,5 @@ MonoBehaviour:
   Objects:
   - Name: Bullet
     Prefab: {fileID: 8001569232245100585, guid: 5d22bd8014b6708bb9f56bd531cefe04, type: 3}
+  - Name: Grenade
+    Prefab: {fileID: 4229874445312771353, guid: eabfb51dabc498d01bb26172f84677a4, type: 3}

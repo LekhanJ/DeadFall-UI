@@ -211,10 +211,10 @@ TextureImporter:
       name: sactx-2048x1024-Crunch-Projectiles-2752e592_2
       rect:
         serializedVersion: 2
-        x: 625
-        y: 743
-        width: 256
-        height: 277
+        x: 756
+        y: 751
+        width: 109
+        height: 137
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
