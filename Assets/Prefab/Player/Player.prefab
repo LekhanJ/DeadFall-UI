@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: 2332635918131188111}
   - component: {fileID: 6489464682158327423}
   - component: {fileID: 102612318251796652}
+  - component: {fileID: -1522085145356134418}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -302,6 +303,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NetworkIdentity
   id: 
+--- !u!50 &-1522085145356134418
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4460504617434661933}
+  m_BodyType: 1
+  m_Simulated: 0
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &6910953545520076217
 GameObject:
   m_ObjectHideFlags: 0
