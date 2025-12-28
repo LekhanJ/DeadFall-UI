@@ -117,12 +117,6 @@ public class PlayerHealthUI : MonoBehaviour
         
         healthFill.fillAmount = healthPercent;
         shieldFill.fillAmount = shieldPercent;
-        
-        // Only log every 60 frames to avoid spam
-        if (Time.frameCount % 60 == 0)
-        {
-            Debug.Log($"🎨 UI Updated - Health: {healthPercent:P0}, Shield: {shieldPercent:P0}");
-        }
     }
 
     public void Bind(PlayerHealth health)

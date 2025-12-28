@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+/// <summary>
+/// Client-side inventory - only displays server state and sends requests
+/// </summary>
 public class InventorySystem : MonoBehaviour
 {
     [Header("Inventory Settings")]
@@ -79,17 +82,15 @@ public class InventorySystem : MonoBehaviour
             }
         }
 
-        // Throw grenade with G key (only if holding grenade)
+        // Throw grenade with G key
         if (Input.GetKeyDown(KeyCode.G))
         {
             InventoryItem item = GetCurrentItem();
             if (item != null && item.itemType == "Grenade" && item.amount > 0)
             {
-                // Throw from player position towards mouse
                 Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector2 throwDirection = (mouseWorld - transform.position).normalized;
                 
-                // Spawn position slightly in front of player
                 Vector2 spawnPos = (Vector2)transform.position + throwDirection * 0.5f;
                 
                 NetworkClient.Instance.SendThrowGrenade(spawnPos, throwDirection);
@@ -217,20 +218,18 @@ public class InventorySystem : MonoBehaviour
             WeaponController weaponController = GetComponent<WeaponController>();
             if (weaponController != null)
             {
-                weaponController.SetFirePoint(null); // Melee doesn't need fire point
+                weaponController.SetFirePoint(null);
             }
         }
     }
 
     void SpawnHealth()
     {
-        // Optional: Show visual of health pack in hand
         if (healthPackVisual != null)
         {
             leftHand.enabled = false;
             rightHand.enabled = false;
             currentItemObject = Instantiate(healthPackVisual, weaponHolder);
-            Debug.Log("Current Item Object is : " + currentItemObject);
             currentItemObject.transform.localPosition = Vector3.zero;
             currentItemObject.transform.localRotation = Quaternion.identity;
         }
@@ -240,23 +239,20 @@ public class InventorySystem : MonoBehaviour
             WeaponController weaponController = GetComponent<WeaponController>();
             if (weaponController != null)
             {
-                weaponController.SetFirePoint(null); // Consumables don't shoot
+                weaponController.SetFirePoint(null);
             }
         }
 
-        // Optional: Show UI hint "Press E to use"
         Debug.Log("Health pack equipped - Press E to use");
     }
 
     void SpawnShield()
     {
-        // Optional: Show visual of shield pack in hand
         if (shieldPackVisual != null)
         {
             leftHand.enabled = false;
             rightHand.enabled = false;
             currentItemObject = Instantiate(shieldPackVisual, weaponHolder);
-            Debug.Log("Current Item Object is : " + currentItemObject);
             currentItemObject.transform.localPosition = Vector3.zero;
             currentItemObject.transform.localRotation = Quaternion.identity;
         }
@@ -266,17 +262,15 @@ public class InventorySystem : MonoBehaviour
             WeaponController weaponController = GetComponent<WeaponController>();
             if (weaponController != null)
             {
-                weaponController.SetFirePoint(null); // Consumables don't shoot
+                weaponController.SetFirePoint(null);
             }
         }
 
-        // Optional: Show UI hint "Press E to use"
         Debug.Log("Shield pack equipped - Press E to use");
     }
 
     void SpawnGrenade()
     {
-        // Optional: Show visual of grenade in hand
         if (grenadeVisual != null)
         {
             leftHand.enabled = false;
@@ -291,11 +285,10 @@ public class InventorySystem : MonoBehaviour
             WeaponController weaponController = GetComponent<WeaponController>();
             if (weaponController != null)
             {
-                weaponController.SetFirePoint(null); // Grenades are thrown, not shot
+                weaponController.SetFirePoint(null);
             }
         }
 
-        // Optional: Show UI hint "Press G to throw"
         InventoryItem item = GetCurrentItem();
         if (item != null)
         {
@@ -342,8 +335,8 @@ public class InventorySystem : MonoBehaviour
 [System.Serializable]
 public class InventoryItem
 {
-    public string itemType;      // "Hand", "Weapon", "Health", "Shield", "Grenade"
+    public string itemType;
     public string itemName;
-    public string weaponName;    // For weapons
-    public int amount;           // For consumables
+    public string weaponName;
+    public int amount;
 }

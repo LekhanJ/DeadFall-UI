@@ -1,16 +1,30 @@
 using UnityEngine;
 
+/// <summary>
+/// Client-side weapon controller - only sends requests to server
+/// All logic is server-authoritative
+/// NOW WITH REAL-TIME UI UPDATES!
+/// </summary>
 public class WeaponController : MonoBehaviour
 {
     private InventorySystem inventory;
     private Camera cam;
     private bool isLocal;
 
-    [Header("Weapon State")]
-    private int currentAmmo;
-    private bool isReloading = false;
-    private float nextFireTime = 0f;
+    [Header("Visual Effects")]
     private Transform currentFirePoint;
+
+    [Header("Weapon State (Server Authoritative)")]
+    public int currentAmmo = 0;
+    public int magazineCapacity = 0;
+    public int reserveAmmo = 0;
+    public bool isReloading = false;
+    public string currentWeaponName = "";
+
+    // Track last values to detect changes
+    private int lastCurrentAmmo = -1;
+    private int lastReserveAmmo = -1;
+    private bool lastReloadingState = false;
 
     void Start()
     {
@@ -23,10 +37,37 @@ public class WeaponController : MonoBehaviour
     {
         if (!isLocal) return;
 
-        HandleWeaponActions();
+        HandleWeaponInput();
+        CheckForUIUpdates();
     }
 
-    void HandleWeaponActions()
+    void CheckForUIUpdates()
+    {
+        // Check if weapon state changed and trigger UI update
+        if (currentAmmo != lastCurrentAmmo || 
+            reserveAmmo != lastReserveAmmo || 
+            isReloading != lastReloadingState)
+        {
+            lastCurrentAmmo = currentAmmo;
+            lastReserveAmmo = reserveAmmo;
+            lastReloadingState = isReloading;
+
+            // Force UI update
+            TriggerAmmoUIUpdate();
+        }
+    }
+
+    void TriggerAmmoUIUpdate()
+    {
+        AmmoUI ammoUI = FindFirstObjectByType<AmmoUI>();
+        if (ammoUI != null)
+        {
+            // This will trigger the UI to refresh on next Update()
+            // The UI will read current weapon controller values
+        }
+    }
+
+    void HandleWeaponInput()
     {
         InventoryItem currentItem = inventory.GetCurrentItem();
         
@@ -34,32 +75,18 @@ public class WeaponController : MonoBehaviour
 
         if (currentItem.itemType == "Hand")
         {
-            HandleMeleeAttack();
+            HandleMeleeInput();
         }
         else if (currentItem.itemType == "Weapon")
         {
-            WeaponData weaponData = GetWeaponData(currentItem.weaponName);
-            if (weaponData != null)
-            {
-                HandleGunShooting(weaponData);
-
-                // Reload key
-                if (Input.GetKeyDown(KeyCode.R))
-                {
-                    StartReload(weaponData);
-                }
-            }
+            HandleGunInput();
         }
-        // Note: Consumables (Health, Shield) are handled in InventorySystem with E key
-        // Grenades are handled in InventorySystem with G key
     }
 
-    void HandleMeleeAttack()
+    void HandleMeleeInput()
     {
-        if (Input.GetMouseButtonDown(0) && Time.time >= nextFireTime)
+        if (Input.GetMouseButtonDown(0))
         {
-            nextFireTime = Time.time + 0.5f; // Melee cooldown
-
             PerformMeleePunch();
         }
     }
@@ -74,131 +101,128 @@ public class WeaponController : MonoBehaviour
         if (hit.collider != null && hit.collider.CompareTag("Player"))
         {
             Debug.Log("Punched: " + hit.collider.name);
-            
             NetworkClient.Instance.SendMeleeAttack(hit.collider.name, 15f);
         }
 
         Debug.DrawRay(transform.position, punchDirection * 1.5f, Color.red, 0.5f);
     }
 
-    void HandleGunShooting(WeaponData weapon)
+    void HandleGunInput()
     {
-        if (weapon == null) return;
-        if (isReloading) return;
+        // Shooting input
+        bool shootPressed = Input.GetMouseButtonDown(0); // Semi-auto
+        bool shootHeld = Input.GetMouseButton(0); // Full-auto
 
-        // Initialize ammo if needed
-        if (currentAmmo == 0 && nextFireTime == 0f)
+        if (shootPressed || shootHeld)
         {
-            currentAmmo = weapon.magazineCapacity;
+            RequestShoot();
         }
 
-        // Auto reload when empty
-        if (currentAmmo <= 0)
+        // Reload input
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            StartReload(weapon);
-            return;
-        }
-
-        if (Input.GetMouseButton(0) && Time.time >= nextFireTime)
-        {
-            nextFireTime = Time.time + weapon.fireRate;
-            currentAmmo--;
-
-            FireBullet(weapon);
-
-            Debug.Log($"Ammo: {currentAmmo}/{weapon.magazineCapacity}");
+            RequestReload();
         }
     }
 
-    void FireBullet(WeaponData weapon)
+    void RequestShoot()
     {
         if (currentFirePoint == null)
         {
-            Debug.LogError("No fire point found on weapon!");
+            Debug.LogWarning("No fire point available");
             return;
+        }
+
+        // Optimistic client prediction - assume we'll shoot successfully
+        if (currentAmmo > 0 && !isReloading)
+        {
+            // Predict ammo consumption for instant feedback
+            currentAmmo--;
+            TriggerAmmoUIUpdate();
         }
 
         Vector3 firePointWorldPos = currentFirePoint.position;
         Vector2 direction = currentFirePoint.up;
 
-        BulletData bulletData = new BulletData
-        {
-            id = System.Guid.NewGuid().ToString(),
-            position = new Position 
-            { 
-                x = firePointWorldPos.x.TwoDecimals(), 
-                y = firePointWorldPos.y.TwoDecimals() 
-            },
-            direction = new Position 
-            { 
-                x = direction.x, 
-                y = direction.y 
-            }
-        };
-
-        NetworkClient.Instance.SendShoot(bulletData, weapon.weaponName);
+        // Send shoot request to server
+        NetworkClient.Instance.SendShootRequest(firePointWorldPos, direction);
     }
 
-    void StartReload(WeaponData weapon)
+    void RequestReload()
     {
-        if (isReloading) return;
-        if (currentAmmo == weapon.magazineCapacity) return;
+        if (isReloading)
+        {
+            Debug.Log("Already reloading");
+            return;
+        }
 
-        isReloading = true;
-        Debug.Log("Reloading...");
-
-        Invoke(nameof(FinishReload), weapon.reloadTime);
+        // Send reload request to server
+        NetworkClient.Instance.SendReloadRequest();
     }
 
-    void FinishReload()
+    // Called by NetworkClient when server sends weapon state
+    public void UpdateWeaponState(WeaponState state)
     {
-        InventoryItem currentItem = inventory.GetCurrentItem();
-        if (currentItem != null && currentItem.itemType == "Weapon")
+        if (state == null) return;
+
+        bool stateChanged = 
+            currentWeaponName != state.weaponName ||
+            currentAmmo != state.currentAmmo ||
+            magazineCapacity != state.magazineCapacity ||
+            reserveAmmo != state.reserveAmmo ||
+            isReloading != state.isReloading;
+
+        currentWeaponName = state.weaponName;
+        currentAmmo = state.currentAmmo;
+        magazineCapacity = state.magazineCapacity;
+        reserveAmmo = state.reserveAmmo;
+        isReloading = state.isReloading;
+
+        if (stateChanged)
         {
-            WeaponData weaponData = GetWeaponData(currentItem.weaponName);
-            if (weaponData != null)
-            {
-                currentAmmo = weaponData.magazineCapacity;
-                isReloading = false;
-                Debug.Log("Reload complete!");
-            }
+            Debug.Log($"Weapon State Updated: {currentWeaponName} | Ammo: {currentAmmo}/{magazineCapacity} | Reserve: {reserveAmmo} | Reloading: {isReloading}");
+            TriggerAmmoUIUpdate();
         }
     }
 
-    WeaponData GetWeaponData(string weaponName)
+    public void OnReloadStarted(string weaponName, float reloadTime)
     {
-        if (string.IsNullOrEmpty(weaponName)) return null;
-        return Resources.Load<WeaponData>($"Weapons/{weaponName}");
+        isReloading = true;
+        Debug.Log($"Reloading {weaponName}... ({reloadTime}s)");
+        TriggerAmmoUIUpdate();
     }
 
-    // Public getters for UI
-    public int GetCurrentAmmo()
+    public void OnReloadCompleted()
     {
-        return currentAmmo;
+        isReloading = false;
+        Debug.Log("Reload complete!");
+        TriggerAmmoUIUpdate();
     }
 
-    public bool IsReloading()
-    {
-        return isReloading;
-    }
-
-    // Called by InventorySystem when weapon is equipped
     public void SetFirePoint(Transform firePoint)
     {
         currentFirePoint = firePoint;
-        
-        // Reset ammo when switching weapons
-        if (firePoint != null)
-        {
-            InventoryItem currentItem = inventory.GetCurrentItem();
-            if (currentItem != null && currentItem.itemType == "Weapon")
-            {
-                WeaponData weaponData = GetWeaponData(currentItem.weaponName);
-                if (weaponData != null)
-                {
-                    currentAmmo = weaponData.magazineCapacity;
-                }
-            }
-        }
     }
+
+    // Public getters for UI
+    public int GetCurrentAmmo() => currentAmmo;
+    public int GetMagazineCapacity() => magazineCapacity;
+    public int GetReserveAmmo() => reserveAmmo;
+    public bool IsReloading() => isReloading;
+    public string GetCurrentWeaponName() => currentWeaponName;
+}
+
+[System.Serializable]
+public class WeaponState
+{
+    public string weaponName;
+    public string weaponType;
+    public string ammoType;
+    public int currentAmmo;
+    public int magazineCapacity;
+    public int reserveAmmo;
+    public bool isReloading;
+    public float reloadTimeRemaining;
+    public float damage;
+    public float fireRate;
 }

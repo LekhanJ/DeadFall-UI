@@ -66,9 +66,6 @@ public class NetworkClient : MonoBehaviour
                 case "aim":
                     HandleAimUpdate(data);
                     break;
-                case "shoot":
-                    HandleShoot(data);
-                    break;
                 case "healthUpdate":
                     HandleHealthUpdate(data);
                     break;
@@ -93,8 +90,23 @@ public class NetworkClient : MonoBehaviour
                 case "inventoryUpdate":
                     HandleInventoryUpdate(data);
                     break;
-                case "fullInventoryUpdate":
-                    HandleFullInventoryUpdate(data);
+                case "weaponStateUpdate":
+                    HandleWeaponStateUpdate(data);
+                    break;
+                case "fullPlayerState":
+                    HandleFullPlayerState(data);
+                    break;
+                case "reloadStarted":
+                    HandleReloadStarted(data);
+                    break;
+                case "reloadCompleted":
+                    HandleReloadCompleted(data);
+                    break;
+                case "shootRejected":
+                    HandleShootRejected(data);
+                    break;
+                case "ammoPickupConfirmed":
+                    HandleAmmoPickupConfirmed(data);
                     break;
                 case "meleeAttack":
                     HandleMeleeAttack(data);
@@ -132,6 +144,12 @@ public class NetworkClient : MonoBehaviour
             ApplyInventoryData(ClientID, data["inventory"]);
         }
 
+        // Set weapon state
+        if (data["weaponState"] != null)
+        {
+            ApplyWeaponState(ClientID, data["weaponState"]);
+        }
+
         // Spawn other players
         foreach (var other in data["others"]!)
         {
@@ -140,7 +158,6 @@ public class NetworkClient : MonoBehaviour
 
             serverObjects[p.sessionId].transform.position = new Vector3(p.position.x, p.position.y, 0f);
 
-            // Set other player inventory
             if (other["inventory"] != null)
             {
                 ApplyInventoryData(p.sessionId, other["inventory"]);
@@ -154,7 +171,6 @@ public class NetworkClient : MonoBehaviour
         SpawnPlayer(p.sessionId, false);
         serverObjects[p.sessionId].transform.position = new Vector3(p.position.x, p.position.y, 0f);
 
-        // Set spawned player inventory
         if (data["inventory"] != null)
         {
             ApplyInventoryData(p.sessionId, data["inventory"]);
@@ -189,18 +205,6 @@ public class NetworkClient : MonoBehaviour
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
 
         player.transform.rotation = Quaternion.Euler(0, 0, angle);
-    }
-
-    void HandleShoot(JObject data)
-    {
-        Position pos = data["position"].ToObject<Position>();
-        Position dir = data["direction"].ToObject<Position>();
-
-        Vector2 p = new Vector2(pos.x, pos.y);
-        Vector2 d = new Vector2(dir.x, dir.y);
-
-        GameObject bullet = Instantiate(bulletPrefab, p, Quaternion.identity, networkContainer);
-        bullet.GetComponent<Bullet>().Init(d);
     }
 
     void HandleHealthUpdate(JObject data)
@@ -309,7 +313,6 @@ public class NetworkClient : MonoBehaviour
 
         Vector2 explosionPos = new Vector2(pos.x, pos.y);
 
-        // Trigger explosion on grenade visual
         if (serverObjects.TryGetValue(id, out GameObject grenade))
         {
             var grenadeVisual = grenade.GetComponent<GrenadeVisual>();
@@ -319,7 +322,6 @@ public class NetworkClient : MonoBehaviour
             }
             else
             {
-                // Fallback: just destroy
                 Destroy(grenade);
             }
 
@@ -349,20 +351,145 @@ public class NetworkClient : MonoBehaviour
         }
     }
 
-    void HandleFullInventoryUpdate(JObject data)
+    void HandleWeaponStateUpdate(JObject data)
+    {
+        if (localPlayer == null) return;
+
+        var weaponStateData = data["weaponState"];
+        var ammoData = data["ammo"];
+        
+        // Update weapon state FIRST (includes current/magazine ammo)
+        if (weaponStateData != null && weaponStateData.Type != JTokenType.Null)
+        {
+            ApplyWeaponState(NetworkClient.ClientID, weaponStateData);
+        }
+
+        // Update reserve ammo SECOND
+        if (ammoData != null && ammoData.Type != JTokenType.Null)
+        {
+            UpdateAmmoFromServer(ammoData);
+        }
+
+        Debug.Log("Weapon state updated from server");
+    }
+
+    void HandleFullPlayerState(JObject data)
     {
         if (localPlayer == null) return;
 
         var inventoryData = data["inventory"];
-        var slots = inventoryData["slots"].ToObject<InventoryItem[]>();
-        int currentIndex = inventoryData["currentSlotIndex"].Value<int>();
+        var weaponStateData = data["weaponState"];
+        var ammoData = data["ammo"];
 
-        var inventory = localPlayer.GetComponent<InventorySystem>();
-        if (inventory != null)
+        if (inventoryData != null)
         {
-            inventory.SetFullInventory(slots, currentIndex);
+            ApplyInventoryData(ClientID, inventoryData);
+        }
+
+        if (weaponStateData != null && weaponStateData.Type != JTokenType.Null)
+        {
+            ApplyWeaponState(ClientID, weaponStateData);
+        }
+
+        if (ammoData != null && ammoData.Type != JTokenType.Null)
+        {
+            UpdateAmmoFromServer(ammoData);
         }
     }
+
+    void HandleReloadStarted(JObject data)
+    {
+        if (localPlayer == null) return;
+
+        string weaponName = data["weaponName"]!.ToString();
+        float reloadTime = data["reloadTime"]!.Value<float>();
+
+        var weaponController = localPlayer.GetComponent<WeaponController>();
+        if (weaponController != null)
+        {
+            weaponController.OnReloadStarted(weaponName, reloadTime);
+        }
+    }
+
+    void HandleReloadCompleted(JObject data)
+    {
+        if (localPlayer == null) return;
+
+        var weaponStateData = data["weaponState"];
+        
+        if (weaponStateData != null && weaponStateData.Type != JTokenType.Null)
+        {
+            ApplyWeaponState(ClientID, weaponStateData);
+        }
+
+        var weaponController = localPlayer.GetComponent<WeaponController>();
+        if (weaponController != null)
+        {
+            weaponController.OnReloadCompleted();
+        }
+    }
+
+    void HandleShootRejected(JObject data)
+    {
+        string reason = data["reason"]!.ToString();
+        Debug.LogWarning($"❌ Shoot rejected by server: {reason}");
+        
+        // Revert optimistic prediction if needed
+        if (localPlayer != null)
+        {
+            WeaponController weaponController = localPlayer.GetComponent<WeaponController>();
+            if (weaponController != null)
+            {
+                // Server will send the correct state, so just log for now
+                Debug.Log("Waiting for server to send correct weapon state...");
+            }
+        }
+    }
+    
+    void HandleAmmoPickupConfirmed(JObject data)
+    {
+        string pickupId = data["pickupId"]!.ToString();
+        string ammoType = data["ammoType"]!.ToString();
+        int amount = data["amount"]!.Value<int>();
+
+        Debug.Log($"✅ Ammo pickup confirmed: {amount} {ammoType} ammo");
+
+        // The weapon state update will come separately from the server
+        // with the updated ammo counts, so we don't need to manually update here
+        
+        // Find and destroy the pickup object (visual only)
+        GameObject pickup = FindObjectByNetworkId(pickupId);
+        if (pickup != null)
+        {
+            Debug.Log($"Destroying pickup visual: {pickupId}");
+            Destroy(pickup);
+        }
+    }
+
+    // Helper method - add this to NetworkClient class
+    AmmoType ConvertServerStringToAmmoType(string serverType)
+    {
+        switch (serverType.ToLower())
+        {
+            case "pistol": return AmmoType.PistolAmmo;
+            case "rifle": return AmmoType.RifleAmmo;
+            case "sniper": return AmmoType.SniperAmmo;
+            case "shotgun": return AmmoType.ShotgunShells;
+            default: return AmmoType.None;
+        }
+    }
+
+    GameObject FindObjectByNetworkId(string id)
+    {
+        NetworkIdentity[] all = FindObjectsByType<NetworkIdentity>(FindObjectsSortMode.None);
+        foreach (var ni in all)
+        {
+            if (ni.GetId() == id)
+                return ni.gameObject;
+        }
+        return null;
+    }
+
 
     void HandleMeleeAttack(JObject data)
     {
@@ -389,6 +516,44 @@ public class NetworkClient : MonoBehaviour
         if (inventory != null)
         {
             inventory.SetFullInventory(slots, currentIndex);
+        }
+    }
+
+    void ApplyWeaponState(string playerId, JToken weaponStateData)
+    {
+        if (!serverObjects.TryGetValue(playerId, out GameObject player)) return;
+
+        var weaponState = weaponStateData.ToObject<WeaponState>();
+
+        var weaponController = player.GetComponent<WeaponController>();
+        if (weaponController != null)
+        {
+            weaponController.UpdateWeaponState(weaponState);
+            Debug.Log($"Applied weapon state: {weaponState.weaponName} - {weaponState.currentAmmo}/{weaponState.magazineCapacity}");
+        }
+    }
+
+    void UpdateAmmoFromServer(JToken ammoData)
+    {
+        int pistol = ammoData["pistol"]?.Value<int>() ?? 0;
+        int rifle = ammoData["rifle"]?.Value<int>() ?? 0;
+        int sniper = ammoData["sniper"]?.Value<int>() ?? 0;
+        int shotgun = ammoData["shotgun"]?.Value<int>() ?? 0;
+
+        Debug.Log($"Updating ammo from server: P={pistol}, R={rifle}, S={sniper}, SG={shotgun}");
+
+        // Update local AmmoManager
+        if (localPlayer != null)
+        {
+            AmmoManager ammoManager = localPlayer.GetComponent<AmmoManager>();
+            if (ammoManager != null)
+            {
+                ammoManager.SetAmmo(AmmoType.PistolAmmo, pistol);
+                ammoManager.SetAmmo(AmmoType.RifleAmmo, rifle);
+                ammoManager.SetAmmo(AmmoType.SniperAmmo, sniper);
+                ammoManager.SetAmmo(AmmoType.ShotgunShells, shotgun);
+                // This will automatically trigger NotifyAmmoChanged() which updates the UI
+            }
         }
     }
 
@@ -423,26 +588,35 @@ public class NetworkClient : MonoBehaviour
         await websocket.SendText(msg.ToString());
     }
 
-    public async void SendShoot(BulletData bulletData, string weaponName)
+    public async void SendShootRequest(Vector3 position, Vector2 direction)
     {
         if (websocket.State != WebSocketState.Open) return;
 
         JObject msg = JObject.FromObject(new
         {
-            type = "shoot",
+            type = "shootRequest",
             position = new
             {
-                x = bulletData.position.x,
-                y = bulletData.position.y
+                x = position.x,
+                y = position.y
             },
             direction = new
             {
-                x = bulletData.direction.x,
-                y = bulletData.direction.y
-            },
-            bulletId = bulletData.id,
-            activator = ClientID,
-            weaponName = weaponName
+                x = direction.x,
+                y = direction.y
+            }
+        });
+
+        await websocket.SendText(msg.ToString());
+    }
+
+    public async void SendReloadRequest()
+    {
+        if (websocket.State != WebSocketState.Open) return;
+
+        JObject msg = JObject.FromObject(new
+        {
+            type = "reloadRequest"
         });
 
         await websocket.SendText(msg.ToString());
@@ -499,6 +673,21 @@ public class NetworkClient : MonoBehaviour
             type = "meleeAttack",
             targetId = targetId,
             damage = damage
+        });
+
+        await websocket.SendText(msg.ToString());
+    }
+
+    public async void SendAmmoPickup(string pickupId, string ammoType, int amount)
+    {
+        if (websocket.State != WebSocketState.Open) return;
+
+        JObject msg = JObject.FromObject(new
+        {
+            type = "ammoPickup",
+            pickupId = pickupId,
+            ammoType = ammoType,
+            amount = amount
         });
 
         await websocket.SendText(msg.ToString());

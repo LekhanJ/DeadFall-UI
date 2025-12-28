@@ -15,12 +15,16 @@ MonoBehaviour:
   weaponName: Pistol
   weaponPrefab: {fileID: 7876296979909139833, guid: 9a7083b22dc23ffebb10d33ef28678d4, type: 3}
   weaponIcon: {fileID: 5292788975627981475, guid: 9dba246260dfb7f56ac9e5ab42495a38, type: 3}
+  weaponType: 0
+  ammoType: 1
   damage: 10
   fireRate: 0.5
   magazineCapacity: 10
   reloadTime: 2
   bulletSpeed: 15
   bulletLifetime: 2
+  pelletsPerShot: 8
+  spreadAngle: 15
   bulletPrefab: {fileID: 8001569232245100585, guid: 5d22bd8014b6708bb9f56bd531cefe04, type: 3}
   shootSound: {fileID: 0}
   reloadSound: {fileID: 0}
